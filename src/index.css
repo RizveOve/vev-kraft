@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Noto Sans Bengali", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Noto Sans Bengali", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #1a1e26;
+  --color-ink-soft: #2a2f3a;
+  --color-blue: #3e6fe0;
+  --color-blue-dark: #2f56ba;
+  --color-blue-light: #eef2fd;
+  --color-paper: #fafaf9;
+  --color-paper-dim: #f1f1ef;
+  --color-line: #e4e4e1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-blue);
+  color: var(--color-paper);
+}

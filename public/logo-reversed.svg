@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 140">
+  <g transform="translate(8,10)">
+    <rect x="26" y="7" width="19" height="74" rx="4" fill="#FAFAF9" transform="rotate(22 35.5 7)"/>
+    <rect x="74" y="7" width="19" height="74" rx="4" fill="#FAFAF9" transform="rotate(-22 83.5 7)"/>
+    <circle cx="60" cy="83" r="9" fill="#3E6FE0"/>
+  </g>
+  <text x="148" y="93" font-family="'Space Grotesk SemiBold','Space Grotesk',sans-serif" font-weight="600" font-size="62" letter-spacing="-0.6"><tspan fill="#FAFAF9">Vev</tspan><tspan fill="#3E6FE0">Kraft</tspan></text>
+</svg>
