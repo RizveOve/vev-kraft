@@ -7,12 +7,12 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="mx-auto max-w-3xl px-6 py-24">
+    <section id="faq" className="mx-auto max-w-3xl px-4 sm:px-6 py-16 md:py-24">
       <div className="text-center">
         <p className="text-sm font-semibold uppercase tracking-widest text-blue">
           {t.faq.eyebrow}
         </p>
-        <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+        <h2 className="mt-3 font-display text-[1.75rem] font-semibold tracking-tight text-ink sm:text-3xl md:text-4xl">
           {t.faq.heading}
         </h2>
       </div>

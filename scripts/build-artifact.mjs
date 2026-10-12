@@ -17,12 +17,16 @@ const css = readFileSync(join(dist, "assets", cssMatch[1]), "utf8");
 
 const logoSvg = readFileSync(join(dist, "logo.svg"), "utf8");
 const logoIconSvg = readFileSync(join(dist, "logo-icon.svg"), "utf8");
+const logoReversedSvg = readFileSync(join(dist, "logo-reversed.svg"), "utf8");
 
 const toDataUri = (svg) => `data:image/svg+xml,${encodeURIComponent(svg)}`;
+const photoDataUri = `data:image/jpeg;base64,${readFileSync(join(dist, "rizve-hasan.jpg")).toString("base64")}`;
 
 const bundledJs = js
   .replaceAll("/logo-icon.svg", toDataUri(logoIconSvg))
-  .replaceAll("/logo.svg", toDataUri(logoSvg));
+  .replaceAll("/logo-reversed.svg", toDataUri(logoReversedSvg))
+  .replaceAll("/logo.svg", toDataUri(logoSvg))
+  .replaceAll("/rizve-hasan.jpg", photoDataUri);
 
 const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/);
 const descMatch = html.match(/<meta name="description" content="([^"]*)"/);

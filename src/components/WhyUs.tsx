@@ -6,19 +6,19 @@ export default function WhyUs() {
 
   return (
     <section className="bg-ink text-paper">
-      <div className="mx-auto max-w-6xl px-6 py-24">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 md:py-24">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-widest text-blue">
             {t.whyus.eyebrow}
           </p>
-          <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl">
+          <h2 className="mt-3 font-display text-[1.75rem] font-semibold tracking-tight sm:text-3xl md:text-4xl">
             {t.whyus.heading}
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-paper/70">{t.whyus.sub}</p>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-8">
+        <div className="mt-10 grid gap-6 md:mt-14 lg:grid-cols-2">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-widest text-blue">
               {t.whyus.getLabel}
             </p>
@@ -37,7 +37,7 @@ export default function WhyUs() {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-widest text-paper/40">
               {t.whyus.skipLabel}
             </p>

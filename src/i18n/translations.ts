@@ -5,6 +5,7 @@ export type ServiceItem = {
   title: string;
   short: string;
   long: string;
+  includes: string[];
   price: string;
 };
 
@@ -13,9 +14,8 @@ export type AmbitionItem = { title: string; text: string };
 export type ProcessStep = { number: string; title: string; description: string };
 
 export type Dictionary = {
-  nav: { services: string; process: string; about: string; contact: string; cta: string };
+  nav: { home: string; services: string; about: string; contact: string };
   hero: {
-    badge: string;
     headline: string;
     sub: string;
     ctaPrimary: string;
@@ -41,27 +41,51 @@ export type Dictionary = {
     ambitionHeading: string;
     ambition: AmbitionItem[];
     cta: string;
+    founderRole: string;
+    photoAlt: string;
+    servicesHeading: string;
+    servicesCta: string;
   };
   contact: {
     eyebrow: string;
     heading: string;
     sub: string;
-    labels: { email: string; phone: string; address: string };
+    labels: { phone: string; address: string };
+    form: {
+      heading: string;
+      name: string;
+      email: string;
+      company: string;
+      optional: string;
+      message: string;
+      submit: string;
+      sending: string;
+      success: string;
+      error: string;
+    };
   };
-  footer: { rights: string; backToTop: string };
-  serviceModal: {
+  footer: {
+    rights: string;
+    backToTop: string;
+    clientsHeading: string;
+    contactHeading: string;
+    address: string;
+    servicesHeading: string;
+  };
+  servicePage: {
+    allServices: string;
+    includesHeading: string;
     priceLabel: string;
     priceNote: string;
     contactCta: string;
-    orContact: string;
-    closeLabel: string;
+    orCall: string;
+    otherServices: string;
   };
 };
 
 const en: Dictionary = {
-  nav: { services: "Services", process: "Process", about: "About", contact: "Contact", cta: "Get in touch" },
+  nav: { home: "Home", services: "Services", about: "About", contact: "Contact" },
   hero: {
-    badge: "Accessibility & applied-AI engineering · Oslo",
     headline: "Accessible software and applied AI, built by the engineer who answers the phone.",
     sub: "VevKraft is an accessibility and applied-AI software consultancy for Norwegian SMEs — accessible web and application development, AI-driven data processing, and the ongoing engineering support a part-time need doesn't justify hiring for.",
     ctaPrimary: "Start a project",
@@ -75,46 +99,74 @@ const en: Dictionary = {
     cta: "See details",
     items: [
       {
-        slug: "accessible-development",
-        title: "Accessible web & app development",
-        short: "Web applications and business tools with accessibility built in from the start — not added at the end.",
-        long: "Accessibility is built into markup, components and keyboard behaviour from the first commit, not retrofitted before launch. Every project ships tested against WCAG 2.0 level AA — the standard the Equality and Anti-Discrimination Act sets for public-facing Norwegian digital services, regardless of company size. You get one engineer carrying the requirements conversation, the architecture and the implementation through to launch.",
-        price: "From NOK 45,000 for a focused accessible website. Larger applications typically run NOK 90,000–250,000+ depending on scope — confirmed after a short discovery conversation.",
+        slug: "accessible-web-development",
+        title: "Accessible web development",
+        short: "Websites and web applications with accessibility built in from the start — plus audits and fixes for the sites you already run.",
+        long: "Accessibility is built into markup, components and keyboard behaviour from the first commit, not retrofitted before launch. Every project ships tested against WCAG 2.0 level AA — the standard the Equality and Anti-Discrimination Act sets for public-facing Norwegian digital services, regardless of company size. For sites you already run, I audit against the real success criteria and assistive-technology behaviour, fix what fails, then retest and document conformance rather than just claim it — a method that comes out of my master's thesis research in digital accessibility, done in association with Simula.",
+        includes: [
+          "New websites and web applications built to WCAG 2.0 AA",
+          "Accessible markup, components and keyboard behaviour from the first commit",
+          "Accessibility audits of existing sites and applications",
+          "Remediation, retesting and documented conformance",
+          "One engineer from the first conversation through to launch",
+        ],
+        price: "Accessible websites from NOK 8,990 (3–5 pages) or NOK 17,990 (5–10 pages with custom design). Larger sites and web applications from NOK 44,990. Accessibility audits from NOK 4,990, with fixes at NOK 890/hour.",
       },
       {
-        slug: "accessibility-audit",
-        title: "Accessibility auditing & remediation",
-        short: "WCAG audits and fixes for sites and applications you already run — retested and documented.",
-        long: "Most Norwegian SMEs don't meet WCAG 2.0 AA, and many don't know the duty applies to them at all — it does, at any company size, under the Equality and Anti-Discrimination Act. I audit against the real success criteria and assistive-technology behaviour, fix what fails, then retest and document conformance rather than just claim it. The method comes out of my master's thesis research in digital accessibility, done in association with Simula.",
-        price: "Audit from NOK 15,000–35,000, depending on site size. Remediation typically NOK 25,000–80,000 on top, retested and documented.",
-      },
-      {
-        slug: "applied-ai",
-        title: "Applied AI & image processing",
-        short: "Automated analysis of drone, thermal and inspection data, with the reporting built around it.",
+        slug: "ai-image-processing",
+        title: "AI and image processing",
+        short: "Automated analysis of drone, thermal and inspection imagery, with the reporting built around it.",
         long: "Operational data — drone footage, thermal imagery, inspection photos — arrives faster than a small team can review it by hand. I build the ingestion, automated analysis and reporting pipeline that turns it into something a person can act on quickly, with the final judgement always left to a human. This is applied engineering on top of existing models, not research for its own sake.",
-        price: "Scoped per engagement. Pilot integrations typically start around NOK 40,000; ongoing processing and reporting from NOK 8,000 a month.",
+        includes: [
+          "Ingestion of drone, thermal and inspection imagery",
+          "Automated analysis built on proven, existing models",
+          "Reports your team can act on quickly",
+          "A human kept in the loop for final decisions",
+          "A pilot first, then ongoing processing once it proves its value",
+        ],
+        price: "Pilot integrations from NOK 19,990. Ongoing processing and reporting from NOK 2,990 a month.",
       },
       {
-        slug: "continuing-dev",
-        title: "Continuing development & cloud operations",
-        short: "Maintenance, performance, security and cloud operations under a monthly agreement.",
-        long: "For clients who need qualified engineering periodically rather than daily, and who'd rather not carry a permanent hire for it. I keep systems I built — or systems I take over — maintained, monitored and current: performance improvements, security updates, cloud cost control, and continued feature development, under one monthly agreement.",
-        price: "Monthly retainers from NOK 5,000, sized to the hours actually needed each month.",
+        slug: "cloud-migration",
+        title: "Cloud migration",
+        short: "Moving servers, applications and data to the cloud — planned, tested and cost-controlled, with ongoing operations afterwards.",
+        long: "Moving to the cloud should lower cost and risk, not add to them. I assess what you run today, plan the migration with clear rollback points, and move servers, applications and data across with minimal downtime — then right-size the setup so the monthly bill matches real usage. Afterwards I can keep everything maintained, monitored and secure under a monthly agreement, so you're never left with infrastructure no one on staff understands.",
+        includes: [
+          "Assessment of current systems, dependencies and costs",
+          "A migration plan with tested rollback points",
+          "Moving servers, applications and data with minimal downtime",
+          "Right-sizing and ongoing cloud cost control",
+          "Optional monthly operations: monitoring, security updates and maintenance",
+        ],
+        price: "Small migrations from NOK 9,990; larger setups quoted after a short assessment. Ongoing operations and maintenance from NOK 890 a month.",
       },
       {
-        slug: "advisory-training",
-        title: "Technical advisory & training",
-        short: "Architecture review, procurement advice, and practical accessibility training for your team.",
+        slug: "it-consultancy-training",
+        title: "IT consultancy & training",
+        short: "Independent advice on technology decisions, and practical training that keeps your team self-sufficient.",
         long: "Advice on technology decisions — architecture review, supplier and procurement proposals, cloud cost assessment — for organisations with no internal expertise to weigh them. Alongside it, practical accessibility training for client developers and content editors, so conformance survives the next release rather than only the one I audited.",
-        price: "Advisory from NOK 1,200/hour, or a fixed-scope architecture review from NOK 20,000. Training workshops from NOK 15,000 per session.",
+        includes: [
+          "Architecture and system reviews",
+          "Assessment of supplier and procurement proposals",
+          "Cloud cost assessment",
+          "Accessibility training for developers and content editors",
+          "Hourly advice or fixed-scope reviews",
+        ],
+        price: "Advisory at NOK 890/hour, or a fixed-scope architecture review from NOK 7,990. Training workshops from NOK 4,990 per session.",
       },
       {
         slug: "hardware-lifecycle",
         title: "Hardware lifecycle engineering",
         short: "Benchmarking, secure erasure, rebuild and refurbishment — keeping equipment in service longer.",
         long: "Some businesses replace hardware on a fixed cycle rather than measured need. I benchmark and diagnose what's actually failing, securely erase and rebuild machines for redeployment, and refurbish retired equipment so it stays useful rather than becoming waste — cutting cost and embodied carbon together.",
-        price: "Assessment and secure erasure from NOK 500 per device. Rebuild and redeployment programmes quoted per fleet size.",
+        includes: [
+          "Benchmarking and diagnosis of existing equipment",
+          "Secure data erasure before reuse or disposal",
+          "Rebuilds for redeployment within your organisation",
+          "Refurbishment of retired equipment",
+          "Lower hardware cost and less e-waste",
+        ],
+        price: "Assessment and secure erasure from NOK 290 per device. Rebuild and redeployment programmes quoted per fleet size.",
       },
     ],
   },
@@ -193,7 +245,7 @@ const en: Dictionary = {
   about: {
     eyebrow: "About",
     heading: "An engineering practice built to last, not just a freelance listing.",
-    intro: "VevKraft is an accessibility and applied-AI software consultancy based in Oslo, founded by Md Rizve Hasan — MSc in Informatics: Programming and System Architecture from the University of Oslo, with a thesis in digital accessibility carried out in association with Simula, and AWS Certified Cloud Practitioner. Today that's one engineer carrying every engagement personally; the practice is built to grow beyond that.",
+    intro: "VevKraft is an accessibility and applied-AI software consultancy based in Oslo, founded by Rizve Hasan — MSc in Informatics: Programming and System Architecture from the University of Oslo, with a thesis in digital accessibility carried out in association with Simula, and AWS Certified Cloud Practitioner. Today that's one engineer carrying every engagement personally; the practice is built to grow beyond that.",
     ambitionHeading: "Ambition, beyond the invoice",
     ambition: [
       {
@@ -214,27 +266,49 @@ const en: Dictionary = {
       },
     ],
     cta: "Get in touch",
+    founderRole: "Founder & CTO",
+    photoAlt: "Portrait of Rizve Hasan",
+    servicesHeading: "What I do",
+    servicesCta: "Explore services",
   },
   contact: {
     eyebrow: "Contact",
     heading: "Tell me what you're building.",
     sub: "Whether it's a new web application, an accessibility audit or ongoing engineering capacity — reach out directly. I respond personally, usually within one business day.",
-    labels: { email: "Email", phone: "Phone", address: "Address" },
+    labels: { phone: "Phone", address: "Address" },
+    form: {
+      heading: "Send a message",
+      name: "Name",
+      email: "Email",
+      company: "Company",
+      optional: "optional",
+      message: "What can I help with?",
+      submit: "Send message",
+      sending: "Sending…",
+      success: "Thanks — your message is on its way. I'll get back to you, usually within one business day.",
+      error: "Something went wrong and the message wasn't sent. Please try again, or call me at",
+    },
   },
-  footer: { rights: "© {year} VEVKRAFT BY HASAN, Oslo, Norway.", backToTop: "Back to top" },
-  serviceModal: {
+  footer: { rights: "© {year} VEVKRAFT BY HASAN, Oslo, Norway.", backToTop: "Back to top",
+    clientsHeading: "Clients",
+    contactHeading: "Contact",
+    address: "Oslo, Norway",
+    servicesHeading: "Services",
+  },
+  servicePage: {
+    allServices: "All services",
+    includesHeading: "What's included",
     priceLabel: "Indicative price",
-    priceNote: "Final price confirmed after a short scoping conversation.",
+    priceNote: "Prices exclude VAT. Final price confirmed after a short scoping conversation.",
     contactCta: "Discuss this project",
-    orContact: "Or reach out directly",
-    closeLabel: "Close",
+    orCall: "Prefer to talk? Call",
+    otherServices: "Other services",
   },
 };
 
 const no: Dictionary = {
-  nav: { services: "Tjenester", process: "Slik jobber jeg", about: "Om oss", contact: "Kontakt", cta: "Ta kontakt" },
+  nav: { home: "Hjem", services: "Tjenester", about: "Om oss", contact: "Kontakt" },
   hero: {
-    badge: "Tilgjengelighet og anvendt KI · Oslo",
     headline: "Tilgjengelig programvare og anvendt KI, bygget av ingeniøren som selv svarer på telefonen.",
     sub: "VevKraft er et konsulentselskap innen tilgjengelighet og anvendt KI for norske SMB-er — tilgjengelig web- og applikasjonsutvikling, KI-drevet databehandling, og løpende teknisk støtte som ikke rettferdiggjør en fast ansettelse.",
     ctaPrimary: "Start et prosjekt",
@@ -248,46 +322,74 @@ const no: Dictionary = {
     cta: "Se detaljer",
     items: [
       {
-        slug: "accessible-development",
-        title: "Tilgjengelig web- og apputvikling",
-        short: "Webapplikasjoner og forretningsverktøy med tilgjengelighet innebygd fra start — ikke lagt til til slutt.",
-        long: "Tilgjengelighet bygges inn i markup, komponenter og tastaturnavigasjon fra første commit, ikke som en etterhåndsjustering før lansering. Alle prosjekter testes mot WCAG 2.0 nivå AA — kravet likestillings- og diskrimineringsloven stiller til offentlig rettede digitale tjenester i Norge, uavhengig av virksomhetens størrelse. Du får én ingeniør som følger kravsamtalen, arkitekturen og gjennomføringen helt til lansering.",
-        price: "Fra NOK 45 000 for en fokusert, tilgjengelig nettside. Større applikasjoner ligger vanligvis på NOK 90 000–250 000+, avhengig av omfang — bekreftet etter en kort kartleggingssamtale.",
+        slug: "accessible-web-development",
+        title: "Tilgjengelig webutvikling",
+        short: "Nettsider og webapplikasjoner med tilgjengelighet innebygd fra start — pluss revisjon og utbedring av nettstedene du allerede driver.",
+        long: "Tilgjengelighet bygges inn i markup, komponenter og tastaturnavigasjon fra første commit, ikke som en etterhåndsjustering før lansering. Alle prosjekter testes mot WCAG 2.0 nivå AA — kravet likestillings- og diskrimineringsloven stiller til offentlig rettede digitale tjenester i Norge, uavhengig av virksomhetens størrelse. For nettsteder du allerede driver, reviderer jeg mot de faktiske suksesskriteriene og hvordan hjelpemiddelteknologi oppfører seg, retter det som svikter, og re-tester og dokumenterer samsvar i stedet for bare å hevde det — en metode som kommer fra masteroppgaven min innen digital tilgjengelighet, gjennomført i samarbeid med Simula.",
+        includes: [
+          "Nye nettsider og webapplikasjoner bygget etter WCAG 2.0 AA",
+          "Tilgjengelig markup, komponenter og tastaturnavigasjon fra første commit",
+          "Tilgjengelighetsrevisjon av eksisterende nettsteder og applikasjoner",
+          "Utbedring, re-testing og dokumentert samsvar",
+          "Én ingeniør fra første samtale til lansering",
+        ],
+        price: "Tilgjengelige nettsider fra NOK 8 990 (3–5 sider) eller NOK 17 990 (5–10 sider med skreddersydd design). Større nettsteder og webapplikasjoner fra NOK 44 990. Tilgjengelighetsrevisjon fra NOK 4 990, med utbedring til NOK 890 per time.",
       },
       {
-        slug: "accessibility-audit",
-        title: "Tilgjengelighetsrevisjon og utbedring",
-        short: "WCAG-revisjoner og retting av nettsteder og applikasjoner du allerede driver — re-testet og dokumentert.",
-        long: "De fleste norske SMB-er oppfyller ikke WCAG 2.0 AA, og mange vet ikke at kravet gjelder dem i det hele tatt — det gjør det, uansett virksomhetsstørrelse, i henhold til likestillings- og diskrimineringsloven. Jeg reviderer mot de faktiske suksesskriteriene og hvordan hjelpemiddelteknologi faktisk oppfører seg, retter det som svikter, og re-tester og dokumenterer samsvar i stedet for bare å hevde det. Metoden kommer fra masteroppgaven min innen digital tilgjengelighet, gjennomført i samarbeid med Simula.",
-        price: "Revisjon fra NOK 15 000–35 000, avhengig av nettstedets størrelse. Utbedring kommer vanligvis i tillegg på NOK 25 000–80 000, re-testet og dokumentert.",
-      },
-      {
-        slug: "applied-ai",
-        title: "Anvendt KI og bildeanalyse",
-        short: "Automatisert analyse av drone-, termisk- og inspeksjonsdata, med rapporteringen bygget rundt den.",
+        slug: "ai-image-processing",
+        title: "KI og bildebehandling",
+        short: "Automatisert analyse av drone-, termisk- og inspeksjonsbilder, med rapporteringen bygget rundt den.",
         long: "Driftsdata — dronefilmer, termiske bilder, inspeksjonsfoto — kommer inn raskere enn et lite team kan gå gjennom manuelt. Jeg bygger innhenting, automatisert analyse og rapportering som gjør dataene til noe man kan handle på raskt, med den endelige vurderingen alltid liggende hos et menneske. Dette er anvendt ingeniørarbeid på eksisterende modeller, ikke forskning for forskningens skyld.",
-        price: "Omfangsbestemt per oppdrag. Pilotintegrasjoner starter vanligvis rundt NOK 40 000; løpende behandling og rapportering fra NOK 8 000 i måneden.",
+        includes: [
+          "Innhenting av drone-, termisk- og inspeksjonsbilder",
+          "Automatisert analyse bygget på velprøvde, eksisterende modeller",
+          "Rapporter teamet ditt kan handle raskt på",
+          "Et menneske tar alltid den endelige beslutningen",
+          "Først en pilot, deretter løpende behandling når den har vist sin verdi",
+        ],
+        price: "Pilotintegrasjoner fra NOK 19 990. Løpende behandling og rapportering fra NOK 2 990 i måneden.",
       },
       {
-        slug: "continuing-dev",
-        title: "Løpende utvikling og drift i skyen",
-        short: "Vedlikehold, ytelse, sikkerhet og skydrift under en månedlig avtale.",
-        long: "For kunder som trenger kvalifisert ingeniørkompetanse periodisk snarere enn daglig, og som helst ikke vil bære en fast ansettelse for det. Jeg holder systemer jeg har bygget — eller overtatt — vedlikeholdt, overvåket og oppdatert: ytelsesforbedringer, sikkerhetsoppdateringer, kostnadskontroll i skyen, og videreutvikling, under én månedlig avtale.",
-        price: "Månedlige avtaler fra NOK 5 000, tilpasset timene som faktisk trengs hver måned.",
+        slug: "cloud-migration",
+        title: "Skymigrering",
+        short: "Flytting av servere, applikasjoner og data til skyen — planlagt, testet og kostnadskontrollert, med løpende drift etterpå.",
+        long: "Å flytte til skyen bør senke kostnad og risiko, ikke øke dem. Jeg kartlegger hva du kjører i dag, planlegger migreringen med tydelige tilbakerullingspunkter, og flytter servere, applikasjoner og data over med minimal nedetid — og tilpasser deretter oppsettet slik at månedsregningen samsvarer med faktisk bruk. Etterpå kan jeg holde alt vedlikeholdt, overvåket og sikkert under en månedlig avtale, slik at du aldri sitter igjen med infrastruktur ingen i staben forstår.",
+        includes: [
+          "Kartlegging av dagens systemer, avhengigheter og kostnader",
+          "En migreringsplan med testede tilbakerullingspunkter",
+          "Flytting av servere, applikasjoner og data med minimal nedetid",
+          "Riktig dimensjonering og løpende kostnadskontroll i skyen",
+          "Valgfri månedlig drift: overvåking, sikkerhetsoppdateringer og vedlikehold",
+        ],
+        price: "Små migreringer fra NOK 9 990; større oppsett prises etter en kort kartlegging. Løpende drift og vedlikehold fra NOK 890 i måneden.",
       },
       {
-        slug: "advisory-training",
-        title: "Teknisk rådgivning og opplæring",
-        short: "Arkitekturgjennomgang, innkjøpsrådgivning og praktisk opplæring i tilgjengelighet for teamet ditt.",
+        slug: "it-consultancy-training",
+        title: "IT-rådgivning og opplæring",
+        short: "Uavhengig rådgivning om teknologivalg, og praktisk opplæring som gjør teamet ditt selvstendig.",
         long: "Rådgivning om teknologivalg — arkitekturgjennomgang, leverandør- og innkjøpsforslag, kostnadsvurdering i skyen — for virksomheter uten intern kompetanse til å vurdere dem. I tillegg praktisk opplæring i tilgjengelighet for kundens utviklere og innholdsredaktører, slik at samsvaret overlever neste lansering, ikke bare den jeg reviderte.",
-        price: "Rådgivning fra NOK 1 200 per time, eller en fastprisvurdering av arkitektur fra NOK 20 000. Opplæringsverksted fra NOK 15 000 per økt.",
+        includes: [
+          "Gjennomgang av arkitektur og systemer",
+          "Vurdering av leverandør- og innkjøpsforslag",
+          "Kostnadsvurdering i skyen",
+          "Opplæring i tilgjengelighet for utviklere og innholdsredaktører",
+          "Rådgivning per time eller gjennomganger til fastpris",
+        ],
+        price: "Rådgivning til NOK 890 per time, eller en fastprisvurdering av arkitektur fra NOK 7 990. Opplæringsverksted fra NOK 4 990 per økt.",
       },
       {
         slug: "hardware-lifecycle",
         title: "Livssyklushåndtering av maskinvare",
         short: "Ytelsestesting, sikker sletting, ombygging og oppussing — utstyret holder lenger i drift.",
         long: "Enkelte virksomheter bytter ut maskinvare etter en fast syklus i stedet for reelt behov. Jeg tester og diagnostiserer hva som faktisk svikter, sletter og bygger om maskiner sikkert for videre bruk, og pusser opp utrangert utstyr slik at det forblir nyttig i stedet for å bli avfall — som kutter både kostnad og innebygd karbonavtrykk.",
-        price: "Vurdering og sikker sletting fra NOK 500 per enhet. Program for ombygging og videre utplassering prises etter flåtestørrelse.",
+        includes: [
+          "Ytelsestesting og diagnostikk av eksisterende utstyr",
+          "Sikker sletting av data før gjenbruk eller avhending",
+          "Ombygging for ny bruk i virksomheten",
+          "Oppussing av utrangert utstyr",
+          "Lavere maskinvarekostnader og mindre EE-avfall",
+        ],
+        price: "Vurdering og sikker sletting fra NOK 290 per enhet. Program for ombygging og videre utplassering prises etter flåtestørrelse.",
       },
     ],
   },
@@ -366,7 +468,7 @@ const no: Dictionary = {
   about: {
     eyebrow: "Om oss",
     heading: "En ingeniørpraksis bygget for å vare, ikke bare et frilansoppdrag.",
-    intro: "VevKraft er et konsulentselskap innen tilgjengelighet og anvendt KI med base i Oslo, grunnlagt av Md Rizve Hasan — master i informatikk: programmering og systemarkitektur fra Universitetet i Oslo, med en masteroppgave i digital tilgjengelighet gjennomført i samarbeid med Simula, og AWS Certified Cloud Practitioner. I dag er det én ingeniør som bærer hvert oppdrag personlig; praksisen er bygget for å vokse forbi det.",
+    intro: "VevKraft er et konsulentselskap innen tilgjengelighet og anvendt KI med base i Oslo, grunnlagt av Rizve Hasan — master i informatikk: programmering og systemarkitektur fra Universitetet i Oslo, med en masteroppgave i digital tilgjengelighet gjennomført i samarbeid med Simula, og AWS Certified Cloud Practitioner. I dag er det én ingeniør som bærer hvert oppdrag personlig; praksisen er bygget for å vokse forbi det.",
     ambitionHeading: "Ambisjon, utover fakturaen",
     ambition: [
       {
@@ -387,27 +489,49 @@ const no: Dictionary = {
       },
     ],
     cta: "Ta kontakt",
+    founderRole: "Grunnlegger og CTO",
+    photoAlt: "Portrett av Rizve Hasan",
+    servicesHeading: "Hva jeg gjør",
+    servicesCta: "Se tjenestene",
   },
   contact: {
     eyebrow: "Kontakt",
     heading: "Fortell meg hva du bygger.",
     sub: "Enten det er en ny webapplikasjon, en tilgjengelighetsrevisjon eller løpende ingeniørkapasitet — ta direkte kontakt. Jeg svarer personlig, vanligvis innen én virkedag.",
-    labels: { email: "E-post", phone: "Telefon", address: "Adresse" },
+    labels: { phone: "Telefon", address: "Adresse" },
+    form: {
+      heading: "Send en melding",
+      name: "Navn",
+      email: "E-post",
+      company: "Bedrift",
+      optional: "valgfritt",
+      message: "Hva kan jeg hjelpe med?",
+      submit: "Send melding",
+      sending: "Sender…",
+      success: "Takk — meldingen din er sendt. Jeg svarer deg, vanligvis innen én virkedag.",
+      error: "Noe gikk galt, og meldingen ble ikke sendt. Prøv igjen, eller ring meg på",
+    },
   },
-  footer: { rights: "© {year} VEVKRAFT BY HASAN, Oslo, Norge.", backToTop: "Til toppen" },
-  serviceModal: {
+  footer: { rights: "© {year} VEVKRAFT BY HASAN, Oslo, Norge.", backToTop: "Til toppen",
+    clientsHeading: "Kunder",
+    contactHeading: "Kontakt",
+    address: "Oslo, Norge",
+    servicesHeading: "Tjenester",
+  },
+  servicePage: {
+    allServices: "Alle tjenester",
+    includesHeading: "Dette er inkludert",
     priceLabel: "Veiledende pris",
-    priceNote: "Endelig pris bekreftes etter en kort avklaringssamtale.",
+    priceNote: "Prisene er eks. mva. Endelig pris bekreftes etter en kort avklaringssamtale.",
     contactCta: "Diskuter dette prosjektet",
-    orContact: "Eller ta direkte kontakt",
-    closeLabel: "Lukk",
+    orCall: "Vil du heller snakke? Ring",
+    otherServices: "Andre tjenester",
   },
 };
 
 const bn: Dictionary = {
-  nav: { services: "সেবাসমূহ", process: "কর্মপ্রণালী", about: "পরিচিতি", contact: "যোগাযোগ", cta: "যোগাযোগ করুন" },
+  nav: { home: "হোম", services: "সেবাসমূহ", about: "পরিচিতি", contact: "যোগাযোগ" },
   hero: {
-    badge: "অ্যাক্সেসিবিলিটি ও প্রায়োগিক এআই · অসলো",
     headline: "অ্যাক্সেসিবল সফটওয়্যার ও প্রায়োগিক এআই, যিনি নিজেই ফোন ধরেন সেই ইঞ্জিনিয়ারের হাতে তৈরি।",
     sub: "ভেভক্রাফট নরওয়ের ছোট ও মাঝারি ব্যবসার জন্য অ্যাক্সেসিবিলিটি ও প্রায়োগিক এআই সফটওয়্যার কনসালটেন্সি — অ্যাক্সেসিবল ওয়েব ও অ্যাপ্লিকেশন ডেভেলপমেন্ট, এআই-চালিত ডেটা প্রসেসিং, এবং যে ধারাবাহিক প্রকৌশল সহায়তার জন্য পূর্ণকালীন নিয়োগের প্রয়োজন হয় না।",
     ctaPrimary: "একটি প্রজেক্ট শুরু করুন",
@@ -421,46 +545,74 @@ const bn: Dictionary = {
     cta: "বিস্তারিত দেখুন",
     items: [
       {
-        slug: "accessible-development",
-        title: "অ্যাক্সেসিবল ওয়েব ও অ্যাপ ডেভেলপমেন্ট",
-        short: "ওয়েব অ্যাপ্লিকেশন ও ব্যবসায়িক টুল, শুরু থেকেই অ্যাক্সেসিবিলিটি সংযুক্ত করে তৈরি — শেষে যোগ করা নয়।",
-        long: "প্রথম কমিট থেকেই মার্কআপ, কম্পোনেন্ট ও কীবোর্ড আচরণে অ্যাক্সেসিবিলিটি অন্তর্ভুক্ত করা হয়, লঞ্চের আগে শেষ মুহূর্তে যোগ করা হয় না। প্রতিটি প্রজেক্ট WCAG 2.0 লেভেল AA অনুযায়ী পরীক্ষিত হয় — নরওয়ের সমতা ও বৈষম্য-বিরোধী আইন অনুযায়ী জনসাধারণের জন্য তৈরি ডিজিটাল সেবার ক্ষেত্রে প্রতিষ্ঠানের আকার নির্বিশেষে এই মান প্রযোজ্য। শুরুর কথোপকথন থেকে স্থাপত্য এবং বাস্তবায়ন পর্যন্ত একজনই ইঞ্জিনিয়ার দায়িত্বে থাকেন।",
-        price: "একটি লক্ষ্যকেন্দ্রিক অ্যাক্সেসিবল ওয়েবসাইটের জন্য শুরু হয় NOK ৪৫,০০০ থেকে। বড় অ্যাপ্লিকেশনের জন্য সাধারণত NOK ৯০,০০০–২৫০,০০০+ — সংক্ষিপ্ত আলোচনার পর চূড়ান্ত হয়।",
+        slug: "accessible-web-development",
+        title: "অ্যাক্সেসিবল ওয়েব ডেভেলপমেন্ট",
+        short: "শুরু থেকেই অ্যাক্সেসিবিলিটি সংযুক্ত করে তৈরি ওয়েবসাইট ও ওয়েব অ্যাপ্লিকেশন — সাথে আপনার বিদ্যমান সাইটের অডিট ও সংশোধন।",
+        long: "প্রথম কমিট থেকেই মার্কআপ, কম্পোনেন্ট ও কীবোর্ড আচরণে অ্যাক্সেসিবিলিটি অন্তর্ভুক্ত করা হয়, লঞ্চের আগে শেষ মুহূর্তে যোগ করা হয় না। প্রতিটি প্রজেক্ট WCAG 2.0 লেভেল AA অনুযায়ী পরীক্ষিত হয় — নরওয়ের সমতা ও বৈষম্য-বিরোধী আইন অনুযায়ী জনসাধারণের জন্য তৈরি ডিজিটাল সেবার ক্ষেত্রে প্রতিষ্ঠানের আকার নির্বিশেষে এই মান প্রযোজ্য। আপনার বিদ্যমান সাইটের ক্ষেত্রে, আমি প্রকৃত সাফল্যের মানদণ্ড ও সহায়ক প্রযুক্তির আচরণ অনুযায়ী অডিট করি, ত্রুটি সংশোধন করি, তারপর কেবল দাবি না করে পুনঃপরীক্ষা ও নথিভুক্ত করি — এই পদ্ধতি এসেছে সিমুলার সহযোগিতায় সম্পন্ন ডিজিটাল অ্যাক্সেসিবিলিটি নিয়ে আমার মাস্টার্স থিসিসের গবেষণা থেকে।",
+        includes: [
+          "WCAG 2.0 AA অনুযায়ী নতুন ওয়েবসাইট ও ওয়েব অ্যাপ্লিকেশন",
+          "প্রথম কমিট থেকেই অ্যাক্সেসিবল মার্কআপ, কম্পোনেন্ট ও কীবোর্ড আচরণ",
+          "বিদ্যমান সাইট ও অ্যাপ্লিকেশনের অ্যাক্সেসিবিলিটি অডিট",
+          "সংশোধন, পুনঃপরীক্ষা ও নথিভুক্ত সম্মতি",
+          "প্রথম আলোচনা থেকে লঞ্চ পর্যন্ত একজনই ইঞ্জিনিয়ার",
+        ],
+        price: "অ্যাক্সেসিবল ওয়েবসাইট NOK ৮,৯৯০ (৩–৫ পৃষ্ঠা) অথবা NOK ১৭,৯৯০ (কাস্টম ডিজাইনসহ ৫–১০ পৃষ্ঠা) থেকে। বড় সাইট ও ওয়েব অ্যাপ্লিকেশন NOK ৪৪,৯৯০ থেকে। অ্যাক্সেসিবিলিটি অডিট NOK ৪,৯৯০ থেকে, সংশোধন ঘণ্টাপ্রতি NOK ৮৯০।",
       },
       {
-        slug: "accessibility-audit",
-        title: "অ্যাক্সেসিবিলিটি অডিট ও সংশোধন",
-        short: "আপনার বিদ্যমান সাইট ও অ্যাপ্লিকেশনের WCAG অডিট ও সংশোধন — পুনঃপরীক্ষিত ও নথিভুক্ত।",
-        long: "বেশিরভাগ নরওয়েজিয়ান এসএমই WCAG 2.0 AA পূরণ করে না, এবং অনেকে জানেই না যে এই দায়বদ্ধতা তাদের ক্ষেত্রেও প্রযোজ্য — প্রতিষ্ঠানের আকার নির্বিশেষে সমতা ও বৈষম্য-বিরোধী আইন অনুযায়ী এটি প্রযোজ্য। আমি প্রকৃত সাফল্যের মানদণ্ড ও সহায়ক প্রযুক্তির আচরণ অনুযায়ী অডিট করি, ত্রুটি সংশোধন করি, তারপর কেবল দাবি না করে পুনঃপরীক্ষা ও নথিভুক্ত করি। এই পদ্ধতি এসেছে সিমুলার সহযোগিতায় সম্পন্ন আমার মাস্টার্স থিসিসের গবেষণা থেকে, যা ডিজিটাল অ্যাক্সেসিবিলিটি নিয়ে করা।",
-        price: "সাইটের আকারের উপর নির্ভর করে অডিট NOK ১৫,০০০–৩৫,০০০ থেকে শুরু। সংশোধনের জন্য সাধারণত আরও NOK ২৫,০০০–৮০,০০০, পুনঃপরীক্ষিত ও নথিভুক্ত।",
-      },
-      {
-        slug: "applied-ai",
-        title: "প্রায়োগিক এআই ও ইমেজ প্রসেসিং",
-        short: "ড্রোন, থার্মাল ও ইন্সপেকশন ডেটার স্বয়ংক্রিয় বিশ্লেষণ, তার চারপাশে গড়া রিপোর্টিং সহ।",
+        slug: "ai-image-processing",
+        title: "এআই ও ইমেজ প্রসেসিং",
+        short: "ড্রোন, থার্মাল ও ইন্সপেকশন ছবির স্বয়ংক্রিয় বিশ্লেষণ, তার চারপাশে গড়া রিপোর্টিং সহ।",
         long: "অপারেশনাল ডেটা — ড্রোন ফুটেজ, থার্মাল ইমেজ, ইন্সপেকশন ছবি — একটি ছোট দল হাতে পর্যালোচনা করতে পারার চেয়ে দ্রুত আসে। আমি এমন ইনজেশন, স্বয়ংক্রিয় বিশ্লেষণ ও রিপোর্টিং পাইপলাইন তৈরি করি যা এটিকে এমন কিছুতে পরিণত করে যার উপর দ্রুত পদক্ষেপ নেওয়া যায়, চূড়ান্ত সিদ্ধান্ত সবসময় মানুষের হাতে রেখে। এটি বিদ্যমান মডেলের উপর প্রায়োগিক প্রকৌশল, নিজের স্বার্থে গবেষণা নয়।",
-        price: "প্রতিটি কাজের পরিধি অনুযায়ী নির্ধারিত। পাইলট ইন্টিগ্রেশন সাধারণত শুরু হয় প্রায় NOK ৪০,০০০ থেকে; চলমান প্রসেসিং ও রিপোর্টিং মাসে NOK ৮,০০০ থেকে।",
+        includes: [
+          "ড্রোন, থার্মাল ও ইন্সপেকশন ছবি সংগ্রহ",
+          "প্রমাণিত, বিদ্যমান মডেলের উপর ভিত্তি করে স্বয়ংক্রিয় বিশ্লেষণ",
+          "এমন রিপোর্ট যার উপর আপনার টিম দ্রুত পদক্ষেপ নিতে পারে",
+          "চূড়ান্ত সিদ্ধান্তে সবসময় একজন মানুষ",
+          "প্রথমে একটি পাইলট, কার্যকারিতা প্রমাণের পর চলমান প্রসেসিং",
+        ],
+        price: "পাইলট ইন্টিগ্রেশন NOK ১৯,৯৯০ থেকে। চলমান প্রসেসিং ও রিপোর্টিং মাসে NOK ২,৯৯০ থেকে।",
       },
       {
-        slug: "continuing-dev",
-        title: "ধারাবাহিক ডেভেলপমেন্ট ও ক্লাউড অপারেশন",
-        short: "মাসিক চুক্তির অধীনে রক্ষণাবেক্ষণ, পারফরম্যান্স, নিরাপত্তা ও ক্লাউড অপারেশন।",
-        long: "যেসব ক্লায়েন্টের প্রতিদিন নয়, বরং মাঝে মাঝে যোগ্য ইঞ্জিনিয়ারিং প্রয়োজন, এবং যারা এর জন্য স্থায়ী নিয়োগ বহন করতে চান না, তাদের জন্য। আমি নিজের তৈরি — বা দায়িত্ব নেওয়া — সিস্টেমগুলো রক্ষণাবেক্ষণ, পর্যবেক্ষণ ও হালনাগাদ রাখি: পারফরম্যান্স উন্নয়ন, নিরাপত্তা আপডেট, ক্লাউড খরচ নিয়ন্ত্রণ, এবং একটি মাসিক চুক্তির অধীনে ধারাবাহিক ফিচার ডেভেলপমেন্ট।",
-        price: "মাসিক প্রয়োজনীয় ঘণ্টার উপর ভিত্তি করে NOK ৫,০০০ থেকে শুরু হওয়া রিটেইনার।",
+        slug: "cloud-migration",
+        title: "ক্লাউড মাইগ্রেশন",
+        short: "সার্ভার, অ্যাপ্লিকেশন ও ডেটা ক্লাউডে স্থানান্তর — পরিকল্পিত, পরীক্ষিত ও খরচ-নিয়ন্ত্রিত, পরবর্তীতে চলমান অপারেশন সহ।",
+        long: "ক্লাউডে যাওয়া খরচ ও ঝুঁকি কমানোর জন্য, বাড়ানোর জন্য নয়। আমি আপনার বর্তমান সিস্টেম মূল্যায়ন করি, স্পষ্ট রোলব্যাক পয়েন্ট সহ মাইগ্রেশনের পরিকল্পনা করি, এবং ন্যূনতম ডাউনটাইমে সার্ভার, অ্যাপ্লিকেশন ও ডেটা স্থানান্তর করি — তারপর সেটআপ এমনভাবে সাজাই যাতে মাসিক বিল প্রকৃত ব্যবহারের সাথে মেলে। এরপর একটি মাসিক চুক্তির অধীনে সবকিছু রক্ষণাবেক্ষণ, পর্যবেক্ষণ ও সুরক্ষিত রাখতে পারি, যাতে আপনাকে কখনো এমন অবকাঠামো নিয়ে পড়ে থাকতে না হয় যা আপনার কর্মীদের কেউ বোঝেন না।",
+        includes: [
+          "বর্তমান সিস্টেম, নির্ভরতা ও খরচের মূল্যায়ন",
+          "পরীক্ষিত রোলব্যাক পয়েন্ট সহ মাইগ্রেশন পরিকল্পনা",
+          "ন্যূনতম ডাউনটাইমে সার্ভার, অ্যাপ্লিকেশন ও ডেটা স্থানান্তর",
+          "সঠিক আকার নির্ধারণ ও চলমান ক্লাউড খরচ নিয়ন্ত্রণ",
+          "ঐচ্ছিক মাসিক অপারেশন: পর্যবেক্ষণ, নিরাপত্তা আপডেট ও রক্ষণাবেক্ষণ",
+        ],
+        price: "ছোট মাইগ্রেশন NOK ৯,৯৯০ থেকে; বড় সেটআপের মূল্য সংক্ষিপ্ত মূল্যায়নের পর নির্ধারিত হয়। চলমান অপারেশন ও রক্ষণাবেক্ষণ মাসে NOK ৮৯০ থেকে।",
       },
       {
-        slug: "advisory-training",
-        title: "টেকনিক্যাল পরামর্শ ও প্রশিক্ষণ",
-        short: "আর্কিটেকচার রিভিউ, প্রকিউরমেন্ট পরামর্শ, এবং আপনার টিমের জন্য ব্যবহারিক অ্যাক্সেসিবিলিটি প্রশিক্ষণ।",
+        slug: "it-consultancy-training",
+        title: "আইটি কনসালটেন্সি ও প্রশিক্ষণ",
+        short: "প্রযুক্তিগত সিদ্ধান্তে স্বাধীন পরামর্শ, এবং ব্যবহারিক প্রশিক্ষণ যা আপনার টিমকে স্বনির্ভর রাখে।",
         long: "যেসব প্রতিষ্ঠানের অভ্যন্তরীণ দক্ষতা নেই, তাদের জন্য প্রযুক্তিগত সিদ্ধান্ত সম্পর্কে পরামর্শ — আর্কিটেকচার রিভিউ, সরবরাহকারী ও প্রকিউরমেন্ট প্রস্তাব, ক্লাউড খরচ মূল্যায়ন। সাথে, ক্লায়েন্টের ডেভেলপার ও কনটেন্ট এডিটরদের জন্য ব্যবহারিক অ্যাক্সেসিবিলিটি প্রশিক্ষণ, যাতে সম্মতি শুধু যে সংস্করণ অডিট করা হয়েছে তাতেই নয়, পরবর্তী রিলিজেও টিকে থাকে।",
-        price: "পরামর্শ ঘণ্টাপ্রতি NOK ১,২০০ থেকে, অথবা নির্দিষ্ট পরিধির আর্কিটেকচার রিভিউ NOK ২০,০০০ থেকে। প্রশিক্ষণ কর্মশালা প্রতি সেশন NOK ১৫,০০০ থেকে।",
+        includes: [
+          "আর্কিটেকচার ও সিস্টেম রিভিউ",
+          "সরবরাহকারী ও প্রকিউরমেন্ট প্রস্তাবের মূল্যায়ন",
+          "ক্লাউড খরচ মূল্যায়ন",
+          "ডেভেলপার ও কনটেন্ট এডিটরদের জন্য অ্যাক্সেসিবিলিটি প্রশিক্ষণ",
+          "ঘণ্টাভিত্তিক পরামর্শ বা নির্দিষ্ট পরিধির রিভিউ",
+        ],
+        price: "পরামর্শ ঘণ্টাপ্রতি NOK ৮৯০, অথবা নির্দিষ্ট পরিধির আর্কিটেকচার রিভিউ NOK ৭,৯৯০ থেকে। প্রশিক্ষণ কর্মশালা প্রতি সেশন NOK ৪,৯৯০ থেকে।",
       },
       {
         slug: "hardware-lifecycle",
         title: "হার্ডওয়্যার লাইফসাইকেল ইঞ্জিনিয়ারিং",
         short: "বেঞ্চমার্কিং, নিরাপদ ইরেজার, রিবিল্ড ও পুনর্নির্মাণ — যন্ত্রপাতিকে আরও বেশি সময় সচল রাখা।",
         long: "কিছু ব্যবসা প্রকৃত প্রয়োজনের বদলে নির্দিষ্ট সময়ান্তরে হার্ডওয়্যার প্রতিস্থাপন করে। আমি বেঞ্চমার্ক ও নির্ণয় করি প্রকৃতপক্ষে কী নষ্ট হচ্ছে, নিরাপদে ডেটা মুছে যন্ত্র পুনর্নির্মাণ করি পুনরায় ব্যবহারের জন্য, এবং অবসরপ্রাপ্ত যন্ত্রপাতি সংস্কার করি যাতে তা বর্জ্যে পরিণত না হয়ে কাজে লাগে — খরচ ও কার্বন পদচিহ্ন দুটোই কমিয়ে।",
-        price: "প্রতি ডিভাইসে মূল্যায়ন ও নিরাপদ ইরেজার NOK ৫০০ থেকে শুরু। রিবিল্ড ও পুনর্নিয়োগ প্রোগ্রাম বহরের আকার অনুযায়ী মূল্য নির্ধারিত।",
+        includes: [
+          "বিদ্যমান যন্ত্রপাতির বেঞ্চমার্কিং ও সমস্যা নির্ণয়",
+          "পুনঃব্যবহার বা নিষ্পত্তির আগে নিরাপদ ডেটা ইরেজার",
+          "প্রতিষ্ঠানের ভেতরে পুনরায় ব্যবহারের জন্য রিবিল্ড",
+          "অবসরপ্রাপ্ত যন্ত্রপাতির সংস্কার",
+          "কম হার্ডওয়্যার খরচ ও কম ই-বর্জ্য",
+        ],
+        price: "প্রতি ডিভাইসে মূল্যায়ন ও নিরাপদ ইরেজার NOK ২৯০ থেকে শুরু। রিবিল্ড ও পুনর্নিয়োগ প্রোগ্রাম বহরের আকার অনুযায়ী মূল্য নির্ধারিত।",
       },
     ],
   },
@@ -539,7 +691,7 @@ const bn: Dictionary = {
   about: {
     eyebrow: "পরিচিতি",
     heading: "টিকে থাকার জন্য গড়া একটি প্রকৌশল প্রতিষ্ঠান, শুধু একটি ফ্রিল্যান্স তালিকা নয়।",
-    intro: "ভেভক্রাফট অসলো-ভিত্তিক একটি অ্যাক্সেসিবিলিটি ও প্রায়োগিক এআই সফটওয়্যার কনসালটেন্সি, প্রতিষ্ঠা করেছেন মোঃ রিজভী হাসান — অসলো বিশ্ববিদ্যালয় থেকে ইনফরমেটিক্সে মাস্টার্স: প্রোগ্রামিং ও সিস্টেম আর্কিটেকচার, সিমুলার সহযোগিতায় সম্পন্ন ডিজিটাল অ্যাক্সেসিবিলিটি নিয়ে থিসিস, এবং AWS সার্টিফায়েড ক্লাউড প্র্যাকটিশনার। আজ এটি একজন ইঞ্জিনিয়ার ব্যক্তিগতভাবে প্রতিটি কাজ পরিচালনা করছেন; প্রতিষ্ঠানটি এর চেয়ে বড় হয়ে ওঠার জন্য গড়া।",
+    intro: "ভেভক্রাফট অসলো-ভিত্তিক একটি অ্যাক্সেসিবিলিটি ও প্রায়োগিক এআই সফটওয়্যার কনসালটেন্সি, প্রতিষ্ঠা করেছেন রিজভী হাসান — অসলো বিশ্ববিদ্যালয় থেকে ইনফরমেটিক্সে মাস্টার্স: প্রোগ্রামিং ও সিস্টেম আর্কিটেকচার, সিমুলার সহযোগিতায় সম্পন্ন ডিজিটাল অ্যাক্সেসিবিলিটি নিয়ে থিসিস, এবং AWS সার্টিফায়েড ক্লাউড প্র্যাকটিশনার। আজ এটি একজন ইঞ্জিনিয়ার ব্যক্তিগতভাবে প্রতিটি কাজ পরিচালনা করছেন; প্রতিষ্ঠানটি এর চেয়ে বড় হয়ে ওঠার জন্য গড়া।",
     ambitionHeading: "উচ্চাকাঙ্ক্ষা, চালানের বাইরেও",
     ambition: [
       {
@@ -560,20 +712,43 @@ const bn: Dictionary = {
       },
     ],
     cta: "যোগাযোগ করুন",
+    founderRole: "প্রতিষ্ঠাতা ও সিটিও",
+    photoAlt: "রিজভী হাসানের প্রতিকৃতি",
+    servicesHeading: "আমি যা করি",
+    servicesCta: "সেবাসমূহ দেখুন",
   },
   contact: {
     eyebrow: "যোগাযোগ",
     heading: "আপনি কী তৈরি করছেন, জানান।",
     sub: "নতুন ওয়েব অ্যাপ্লিকেশন হোক, অ্যাক্সেসিবিলিটি অডিট হোক বা ধারাবাহিক ইঞ্জিনিয়ারিং সক্ষমতা — সরাসরি যোগাযোগ করুন। আমি ব্যক্তিগতভাবে সাড়া দিই, সাধারণত এক কার্যদিবসের মধ্যে।",
-    labels: { email: "ইমেইল", phone: "ফোন", address: "ঠিকানা" },
+    labels: { phone: "ফোন", address: "ঠিকানা" },
+    form: {
+      heading: "একটি বার্তা পাঠান",
+      name: "নাম",
+      email: "ইমেইল",
+      company: "প্রতিষ্ঠান",
+      optional: "ঐচ্ছিক",
+      message: "আমি কীভাবে সাহায্য করতে পারি?",
+      submit: "বার্তা পাঠান",
+      sending: "পাঠানো হচ্ছে…",
+      success: "ধন্যবাদ — আপনার বার্তা পাঠানো হয়েছে। আমি সাধারণত এক কার্যদিবসের মধ্যে উত্তর দিই।",
+      error: "কিছু একটা সমস্যা হয়েছে, বার্তাটি পাঠানো যায়নি। আবার চেষ্টা করুন, অথবা ফোন করুন:",
+    },
   },
-  footer: { rights: "© {year} VEVKRAFT BY HASAN, অসলো, নরওয়ে।", backToTop: "উপরে ফিরে যান" },
-  serviceModal: {
+  footer: { rights: "© {year} VEVKRAFT BY HASAN, অসলো, নরওয়ে।", backToTop: "উপরে ফিরে যান",
+    clientsHeading: "ক্লায়েন্ট",
+    contactHeading: "যোগাযোগ",
+    address: "অসলো, নরওয়ে",
+    servicesHeading: "সেবাসমূহ",
+  },
+  servicePage: {
+    allServices: "সব সেবা",
+    includesHeading: "যা অন্তর্ভুক্ত",
     priceLabel: "আনুমানিক মূল্য",
-    priceNote: "সংক্ষিপ্ত আলোচনার পর চূড়ান্ত মূল্য নিশ্চিত করা হয়।",
+    priceNote: "মূল্য ভ্যাট ছাড়া। সংক্ষিপ্ত আলোচনার পর চূড়ান্ত মূল্য নিশ্চিত করা হয়।",
     contactCta: "এই প্রজেক্ট নিয়ে আলোচনা করুন",
-    orContact: "অথবা সরাসরি যোগাযোগ করুন",
-    closeLabel: "বন্ধ করুন",
+    orCall: "কথা বলতে চান? ফোন করুন",
+    otherServices: "অন্যান্য সেবা",
   },
 };
 

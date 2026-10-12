@@ -12,6 +12,7 @@
   --color-paper: #fafaf9;
   --color-paper-dim: #f1f1ef;
   --color-line: #e4e4e1;
+  --color-navy: #0f1a33;
 }
 
 html {
@@ -20,6 +21,7 @@ html {
 
 body {
   background: var(--color-paper);
+  overflow-wrap: break-word;
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;

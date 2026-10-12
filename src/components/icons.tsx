@@ -117,3 +117,16 @@ export function CrossIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+const SERVICE_ICONS: Record<string, (props: IconProps) => React.JSX.Element> = {
+  "accessible-web-development": AccessIcon,
+  "ai-image-processing": SparkIcon,
+  "cloud-migration": CloudIcon,
+  "it-consultancy-training": AdviceIcon,
+  "hardware-lifecycle": HardwareIcon,
+};
+
+export function ServiceIcon({ slug, className }: IconProps & { slug: string }) {
+  const Icon = SERVICE_ICONS[slug] ?? CodeIcon;
+  return <Icon className={className} />;
+}

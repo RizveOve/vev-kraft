@@ -1,6 +1,5 @@
 import { useLanguage } from "../i18n/LanguageContext";
-
-const CLIENTS = ["Altivon", "Celestial Invention", "Måm Asian Diner"];
+import { CLIENTS } from "../siteInfo";
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -16,40 +15,35 @@ export default function Hero() {
         style={{ background: "radial-gradient(circle, #3E6FE0, transparent 70%)" }}
       />
 
-      <div className="relative mx-auto max-w-6xl px-6 pb-20 pt-16 md:pb-28 md:pt-20">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium tracking-wide text-paper/80">
-          <span className="h-1.5 w-1.5 rounded-full bg-blue" />
-          {t.hero.badge}
-        </div>
-
-        <h1 className="mt-6 max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight md:text-6xl">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pb-16 pt-12 sm:pb-20 sm:pt-16 md:pb-28 md:pt-20">
+        <h1 className="max-w-3xl font-display text-[2rem] font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl lg:leading-[1.08]">
           {t.hero.headline}
         </h1>
 
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-paper/70 md:text-xl">
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-paper/70 sm:mt-6 sm:text-lg md:text-xl">
           {t.hero.sub}
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center gap-4">
+        <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
           <a
-            href="#contact"
-            className="rounded-full bg-blue px-7 py-3.5 text-sm font-semibold text-paper transition-transform hover:scale-[1.03] hover:bg-blue-dark"
+            href="#/contact"
+            className="rounded-full bg-blue px-7 py-3.5 text-center text-sm font-semibold text-paper transition-transform hover:scale-[1.03] hover:bg-blue-dark"
           >
             {t.hero.ctaPrimary}
           </a>
           <a
-            href="#services"
-            className="rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-paper/90 transition-colors hover:border-white/40 hover:bg-white/5"
+            href="#/services"
+            className="rounded-full border border-white/20 px-7 py-3.5 text-center text-sm font-semibold text-paper/90 transition-colors hover:border-white/40 hover:bg-white/5"
           >
             {t.hero.ctaSecondary}
           </a>
         </div>
 
-        <div className="mt-16 border-t border-white/10 pt-8">
+        <div className="mt-12 border-t border-white/10 pt-8 sm:mt-16">
           <p className="text-xs font-medium uppercase tracking-widest text-paper/40">
             {t.hero.trustedBy}
           </p>
-          <div className="mt-4 flex flex-wrap gap-x-10 gap-y-3 font-display text-lg font-medium text-paper/70 md:text-xl">
+          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-display text-base font-medium text-paper/70 sm:gap-x-10 sm:gap-y-3 sm:text-lg md:text-xl">
             {CLIENTS.map((c) => (
               <span key={c}>{c}</span>
             ))}
