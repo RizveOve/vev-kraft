@@ -18,13 +18,23 @@ function isLang(value: string | null): value is Lang {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    return isLang(stored) ? stored : "en";
+    // Runs during the build-time prerender too, where there is no window.
+    if (typeof window === "undefined") return "en";
+    try {
+      const stored = window.localStorage.getItem(STORAGE_KEY);
+      return isLang(stored) ? stored : "en";
+    } catch {
+      return "en";
+    }
   });
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    window.localStorage.setItem(STORAGE_KEY, lang);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, lang);
+    } catch {
+      // Storage unavailable (private mode, blocked site data) — the choice just won't persist.
+    }
   }, [lang]);
 
   return (

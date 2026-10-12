@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vev-kraft.no/sitemap.xml

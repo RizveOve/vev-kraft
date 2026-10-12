@@ -18,7 +18,7 @@ function routeFromHash(hash: string): Route {
 export const serviceHref = (slug: string) => `#/services/${slug}`;
 
 export function useRoute() {
-  const [hash, setHash] = useState(() => window.location.hash);
+  const [hash, setHash] = useState(() => (typeof window === "undefined" ? "" : window.location.hash));
 
   useEffect(() => {
     const onHashChange = () => setHash(window.location.hash);
