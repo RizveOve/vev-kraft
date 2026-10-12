@@ -7,7 +7,8 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="mx-auto max-w-3xl px-4 sm:px-6 py-16 md:py-24">
+    <section id="faq" className="bg-paper-dim">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 py-16 md:py-24">
       <div className="text-center">
         <p className="text-sm font-semibold uppercase tracking-widest text-blue">
           {t.faq.eyebrow}
@@ -46,6 +47,7 @@ export default function Faq() {
             </div>
           );
         })}
+      </div>
       </div>
     </section>
   );

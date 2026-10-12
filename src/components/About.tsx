@@ -17,13 +17,13 @@ export default function About() {
           <p className="mt-6 text-[15px] leading-relaxed text-ink-soft/75">{t.about.intro}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="#/services"
+              href="/services"
               className="inline-flex rounded-full bg-ink px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-blue"
             >
               {t.about.servicesCta}
             </a>
             <a
-              href="#/contact"
+              href="/contact"
               className="inline-flex rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-ink"
             >
               {t.about.cta}
@@ -57,7 +57,7 @@ export default function About() {
           <p className="text-sm font-semibold uppercase tracking-widest text-blue">
             {t.about.servicesHeading}
           </p>
-          <a href="#/services" className="text-sm font-semibold text-ink transition-colors hover:text-blue">
+          <a href="/services" className="text-sm font-semibold text-ink transition-colors hover:text-blue">
             {t.about.servicesCta} →
           </a>
         </div>

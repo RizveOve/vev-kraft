@@ -12,11 +12,16 @@
   --color-paper: #fafaf9;
   --color-paper-dim: #f1f1ef;
   --color-line: #e4e4e1;
-  --color-navy: #0f1a33;
+  --color-stone: #e2e2dd;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Keep anchored sections clear of the sticky header. */
+section[id] {
+  scroll-margin-top: 4.5rem;
 }
 
 body {

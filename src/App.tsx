@@ -1,11 +1,14 @@
 import { LanguageProvider, useLanguage } from "./i18n/LanguageContext";
+import { useEffect } from "react";
 import { useRoute, type Route } from "./router";
+import { pageMeta } from "./seo";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
 import ServiceDetail from "./components/ServiceDetail";
-import Process from "./components/Process";
-import WhyUs from "./components/WhyUs";
+import WhyVevKraft from "./components/WhyVevKraft";
+import HowItWorks from "./components/HowItWorks";
+import MeetRizve from "./components/MeetRizve";
 import Faq from "./components/Faq";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -15,8 +18,9 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <Process />
-      <WhyUs />
+      <WhyVevKraft />
+      <HowItWorks />
+      <MeetRizve />
       <Faq />
     </>
   );
@@ -24,6 +28,12 @@ function HomePage() {
 
 function PageContent({ route }: { route: Route }) {
   const { t } = useLanguage();
+
+  const meta = pageMeta(route, t);
+  useEffect(() => {
+    document.title = meta.title;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", meta.description);
+  }, [meta.title, meta.description]);
 
   switch (route.page) {
     case "service": {

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="800" viewBox="0 0 960 800" role="img" aria-label="Accessibility: a keyboard-focused form, a contrast check and a full accessibility score">
+  <defs>
+  </defs>
+
+  <!-- Browser with form -->
+  <rect x="80" y="96" width="560" height="470" rx="18" fill="#F7F8FA"/>
+  <rect x="80" y="96" width="560" height="46" rx="18" fill="#E3E7EE"/>
+  <rect x="80" y="124" width="560" height="18" fill="#E3E7EE"/>
+  <circle cx="108" cy="119" r="6" fill="#C3C9D4"/><circle cx="128" cy="119" r="6" fill="#C3C9D4"/><circle cx="148" cy="119" r="6" fill="#C3C9D4"/>
+  <rect x="184" y="107" width="280" height="24" rx="12" fill="#FFFFFF"/>
+
+  <rect x="116" y="174" width="220" height="20" rx="6" fill="#1A1E26"/>
+  <rect x="116" y="206" width="300" height="10" rx="4" fill="#AEB5C2"/>
+
+  <rect x="116" y="244" width="80" height="10" rx="4" fill="#545B69"/>
+  <rect x="116" y="262" width="488" height="48" rx="10" fill="#FFFFFF" stroke="#C3C9D4" stroke-width="2"/>
+  <rect x="136" y="280" width="140" height="12" rx="4" fill="#545B69"/>
+
+  <rect x="116" y="334" width="110" height="10" rx="4" fill="#545B69"/>
+  <rect x="109" y="345" width="502" height="62" rx="15" fill="none" stroke="#9DB8FF" stroke-width="5"/>
+  <rect x="116" y="352" width="488" height="48" rx="10" fill="#FFFFFF" stroke="#3E6FE0" stroke-width="3"/>
+  <rect x="136" y="370" width="150" height="12" rx="4" fill="#1A1E26"/>
+  <rect x="292" y="364" width="2" height="24" fill="#1A1E26"/>
+
+  <rect x="116" y="430" width="24" height="24" rx="6" fill="#3E6FE0"/>
+  <path d="M121 442 l5 5 l9 -10" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="152" y="437" width="180" height="10" rx="4" fill="#545B69"/>
+
+  <rect x="116" y="484" width="180" height="48" rx="12" fill="#1A1E26"/>
+  <rect x="156" y="503" width="100" height="10" rx="4" fill="#FFFFFF"/>
+
+  <rect x="330" y="486" width="68" height="44" rx="10" fill="#EEF1F6" stroke="#C3C9D4" stroke-width="2"/>
+  <text x="364" y="514" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="600" fill="#1A1E26">Tab</text>
+
+  <!-- Contrast check -->
+  <rect x="580" y="150" width="300" height="210" rx="18" fill="#2A3142" stroke="#3F4A60" stroke-width="2"/>
+  <rect x="604" y="176" width="120" height="80" rx="12" fill="#1A1E26" stroke="#3F4A60" stroke-width="2"/>
+  <text x="664" y="228" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#FFFFFF">Aa</text>
+  <rect x="736" y="176" width="120" height="80" rx="12" fill="#FFFFFF"/>
+  <text x="796" y="228" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#2F5CC4">Aa</text>
+  <text x="604" y="310" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="32" font-weight="700" fill="#FFFFFF">4.8 : 1</text>
+  <text x="604" y="338" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#9AA3B5">Text contrast</text>
+  <rect x="764" y="286" width="92" height="36" rx="18" fill="#1F5E46"/>
+  <path d="M780 304 l5 5 l9 -10" stroke="#7FE0B8" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="802" y="310" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#7FE0B8">AA</text>
+
+  <!-- Accessibility badge -->
+  <circle cx="872" cy="146" r="44" fill="#3E6FE0" stroke="#F1F1EF" stroke-width="6"/>
+  <circle cx="872" cy="128" r="7" fill="#FFFFFF"/>
+  <path d="M850 142 H894 M872 142 V162 M872 162 L862 178 M872 162 L882 178" stroke="#FFFFFF" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Score -->
+  <rect x="600" y="400" width="280" height="250" rx="18" fill="#F7F8FA"/>
+  <circle cx="740" cy="500" r="62" fill="none" stroke="#E3E7EE" stroke-width="14"/>
+  <circle cx="740" cy="500" r="62" fill="none" stroke="#3E6FE0" stroke-width="14"/>
+  <text x="740" y="513" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="38" font-weight="700" fill="#1A1E26">100</text>
+  <text x="740" y="614" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" fill="#545B69">Accessibility score</text>
+
+  <!-- Screen reader -->
+  <rect x="100" y="600" width="460" height="116" rx="20" fill="#2A3142" stroke="#3F4A60" stroke-width="2"/>
+  <circle cx="152" cy="658" r="26" fill="#3E6FE0"/>
+  <path d="M141 651 h8 l10 -8 v30 l-10 -8 h-8 z" fill="#FFFFFF"/>
+  <path d="M165 649 q7 9 0 18" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="196" y="652" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" fill="#E6E9EF">“Email address, edit text, required”</text>
+  <text x="196" y="682" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#9AA3B5">Screen reader output</text>
+</svg>

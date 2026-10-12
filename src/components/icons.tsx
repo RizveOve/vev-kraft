@@ -118,6 +118,33 @@ export function CrossIcon({ className }: IconProps) {
   );
 }
 
+export function PhoneIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={`${base} ${className ?? ""}`} {...strokeProps}>
+      <path d="M5 4.5h3l1.5 4-2 1.3a10 10 0 0 0 6.7 6.7l1.3-2 4 1.5v3a1.5 1.5 0 0 1-1.6 1.5A15.5 15.5 0 0 1 3.5 6.1 1.5 1.5 0 0 1 5 4.5Z" />
+    </svg>
+  );
+}
+
+export function LayersIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={`${base} ${className ?? ""}`} {...strokeProps}>
+      <path d="M12 4l8.5 4.5L12 13 3.5 8.5 12 4Z" />
+      <path d="M3.5 12.5L12 17l8.5-4.5" />
+      <path d="M3.5 16.5L12 21l8.5-4.5" />
+    </svg>
+  );
+}
+
+export function ChartIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={`${base} ${className ?? ""}`} {...strokeProps}>
+      <path d="M4 20h16" />
+      <path d="M7 16v-4M12 16V7M17 16v-6" />
+    </svg>
+  );
+}
+
 const SERVICE_ICONS: Record<string, (props: IconProps) => React.JSX.Element> = {
   "accessible-web-development": AccessIcon,
   "ai-image-processing": SparkIcon,

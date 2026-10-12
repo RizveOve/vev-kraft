@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -28,6 +28,11 @@ const bundledJs = js
   .replaceAll("/logo.svg", toDataUri(logoSvg))
   .replaceAll("/rizve-hasan.jpg", photoDataUri);
 
+let bundledWithHero = bundledJs;
+for (const file of readdirSync(join(dist, "hero"))) {
+  bundledWithHero = bundledWithHero.replaceAll(`/hero/${file}`, toDataUri(readFileSync(join(dist, "hero", file), "utf8")));
+}
+
 const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/);
 const descMatch = html.match(/<meta name="description" content="([^"]*)"/);
 const themeMatch = html.match(/<meta name="theme-color" content="([^"]*)"/);
@@ -49,7 +54,7 @@ ${css}
 <div id="root"></div>
 
 <script type="module">
-${bundledJs}
+${bundledWithHero}
 </script>
 `;
 

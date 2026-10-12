@@ -14,7 +14,7 @@ function LanguageSwitcher({ className }: { className?: string }) {
   const { lang, setLang } = useLanguage();
   return (
     <div
-      className={`inline-flex items-center gap-1 rounded-full border border-line bg-paper-dim p-1 ${className ?? ""}`}
+      className={`inline-flex items-center gap-1 rounded-full border border-ink/10 bg-paper-dim p-1 ${className ?? ""}`}
     >
       {LANGS.map((l) => (
         <button
@@ -23,7 +23,7 @@ function LanguageSwitcher({ className }: { className?: string }) {
           onClick={() => setLang(l.code)}
           aria-pressed={lang === l.code}
           className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-colors ${
-            lang === l.code ? "bg-ink text-paper" : "text-ink-soft/60 hover:text-ink"
+            lang === l.code ? "bg-ink text-paper" : "text-ink-soft/75 hover:text-ink"
           }`}
         >
           {l.label}
@@ -109,7 +109,7 @@ function ServicesDropdown({ active }: { active: boolean }) {
               </a>
             ))}
             <a
-              href="#/services"
+              href="/services"
               onClick={() => setOpen(false)}
               className="mt-1 block rounded-xl border-t border-line px-3 py-2.5 text-sm font-semibold text-blue transition-colors hover:bg-paper-dim"
             >
@@ -126,7 +126,6 @@ export default function Header({ page }: { page: Page }) {
   const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   const servicesActive = page === "services" || page === "service";
   const linkClass = (active: boolean) =>
@@ -139,36 +138,23 @@ export default function Header({ page }: { page: Page }) {
     setServicesOpen(false);
   };
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={`sticky top-0 z-50 border-b transition-colors ${
-        scrolled || open
-          ? "bg-paper/95 backdrop-blur border-line"
-          : "bg-transparent border-transparent"
-      }`}
-    >
+    <header className="sticky top-0 z-50 border-b border-ink/10 bg-stone">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 md:py-4">
-        <a href="#/" onClick={closeMenu} className="flex flex-none items-center gap-2" aria-label="VevKraft home">
+        <a href="/" onClick={closeMenu} className="flex flex-none items-center gap-2" aria-label="VevKraft home">
           <img src="/logo.svg" alt="VevKraft" className="h-6 w-auto sm:h-7" />
         </a>
 
         <nav className="hidden items-center gap-6 md:flex lg:gap-8">
-          <a href="#/" aria-current={page === "home" ? "page" : undefined} className={linkClass(page === "home")}>
+          <a href="/" aria-current={page === "home" ? "page" : undefined} className={linkClass(page === "home")}>
             {t.nav.home}
           </a>
           <ServicesDropdown active={servicesActive} />
-          <a href="#/about" aria-current={page === "about" ? "page" : undefined} className={linkClass(page === "about")}>
+          <a href="/about" aria-current={page === "about" ? "page" : undefined} className={linkClass(page === "about")}>
             {t.nav.about}
           </a>
           <a
-            href="#/contact"
+            href="/contact"
             aria-current={page === "contact" ? "page" : undefined}
             className={linkClass(page === "contact")}
           >
@@ -205,10 +191,10 @@ export default function Header({ page }: { page: Page }) {
       {open && (
         <div
           id="mobile-menu"
-          className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-paper px-4 pb-6 pt-3 sm:px-6 md:hidden"
+          className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-ink/10 bg-stone px-4 pb-6 pt-3 sm:px-6 md:hidden"
         >
           <nav className="flex flex-col">
-            <a href="#/" onClick={closeMenu} aria-current={page === "home" ? "page" : undefined} className={mobileLinkClass(page === "home")}>
+            <a href="/" onClick={closeMenu} aria-current={page === "home" ? "page" : undefined} className={mobileLinkClass(page === "home")}>
               {t.nav.home}
             </a>
 
@@ -231,16 +217,16 @@ export default function Header({ page }: { page: Page }) {
                     {s.title}
                   </a>
                 ))}
-                <a href="#/services" onClick={closeMenu} className="py-2 text-[15px] font-semibold text-blue">
+                <a href="/services" onClick={closeMenu} className="py-2 text-[15px] font-semibold text-blue">
                   {t.servicePage.allServices} →
                 </a>
               </div>
             )}
 
-            <a href="#/about" onClick={closeMenu} aria-current={page === "about" ? "page" : undefined} className={mobileLinkClass(page === "about")}>
+            <a href="/about" onClick={closeMenu} aria-current={page === "about" ? "page" : undefined} className={mobileLinkClass(page === "about")}>
               {t.nav.about}
             </a>
-            <a href="#/contact" onClick={closeMenu} aria-current={page === "contact" ? "page" : undefined} className={mobileLinkClass(page === "contact")}>
+            <a href="/contact" onClick={closeMenu} aria-current={page === "contact" ? "page" : undefined} className={mobileLinkClass(page === "contact")}>
               {t.nav.contact}
             </a>
             <LanguageSwitcher className="mt-4 w-fit" />

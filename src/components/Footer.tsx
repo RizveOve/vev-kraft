@@ -8,17 +8,17 @@ import {
 } from "../siteInfo";
 import { serviceHref } from "../router";
 
-const headingClass = "text-xs font-semibold uppercase tracking-widest text-blue";
-const linkClass = "transition-colors hover:text-paper";
+const headingClass = "text-xs font-semibold uppercase tracking-widest text-blue-dark";
+const linkClass = "transition-colors hover:text-ink";
 
 export default function Footer() {
   const { t } = useLanguage();
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 bg-navy text-sm text-paper/65">
+    <footer className="border-t border-ink/10 bg-stone text-sm text-ink-soft/80">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16">
-        <img src="/logo-reversed.svg" alt="VevKraft" className="h-8 w-auto" />
+        <img src="/logo.svg" alt="VevKraft" className="h-8 w-auto" />
 
         <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <div>
@@ -67,7 +67,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-4 border-t border-white/10 pt-8 text-paper/45 text-center sm:flex-row sm:justify-between sm:text-left">
+        <div className="mt-12 flex flex-col items-center gap-4 border-t border-ink/10 pt-8 text-ink-soft/75 text-center sm:flex-row sm:justify-between sm:text-left">
           <span>{t.footer.rights.replace("{year}", String(year))}</span>
           <button type="button" onClick={() => window.scrollTo({ top: 0 })} className={linkClass}>
             {t.footer.backToTop}

@@ -11,7 +11,6 @@ export type ServiceItem = {
 
 export type FaqItem = { q: string; a: string };
 export type AmbitionItem = { title: string; text: string };
-export type ProcessStep = { number: string; title: string; description: string };
 
 export type Dictionary = {
   nav: { home: string; services: string; about: string; contact: string };
@@ -21,18 +20,14 @@ export type Dictionary = {
     ctaPrimary: string;
     ctaSecondary: string;
     trustedBy: string;
+    carouselLabel: string;
+    slides: string[];
+    showSlide: string;
   };
   services: { eyebrow: string; heading: string; sub: string; cta: string; items: ServiceItem[] };
-  process: { eyebrow: string; heading: string; steps: ProcessStep[] };
-  whyus: {
-    eyebrow: string;
-    heading: string;
-    sub: string;
-    getLabel: string;
-    skipLabel: string;
-    get: string[];
-    skip: string[];
-  };
+  why: { heading: string; items: { title: string; text: string }[] };
+  how: { heading: string; steps: { label: string; title: string; text: string }[] };
+  meet: { heading: string; text: string; chips: string[]; more: string; newTab: string };
   faq: { eyebrow: string; heading: string; items: FaqItem[] };
   about: {
     eyebrow: string;
@@ -91,6 +86,15 @@ const en: Dictionary = {
     ctaPrimary: "Start a project",
     ctaSecondary: "See what I do",
     trustedBy: "Trusted by",
+    carouselLabel: "What VevKraft builds",
+    slides: [
+      "Web development: a website in a browser, its code and the mobile version",
+      "Accessibility: a keyboard-focused form, a contrast check and a full accessibility score",
+      "Cloud migration: an old server moved into the AWS cloud, now live",
+      "AI integration: a chat assistant connected to email, calendar, documents and data",
+      "Image processing: a drone thermal image of solar panels with hotspots detected and an inspection report",
+    ],
+    showSlide: "Show illustration",
   },
   services: {
     eyebrow: "Services",
@@ -170,47 +174,29 @@ const en: Dictionary = {
       },
     ],
   },
-  process: {
-    eyebrow: "How it works",
-    heading: "Three steps, one person accountable throughout.",
-    steps: [
-      {
-        number: "01",
-        title: "Discover & demonstrate",
-        description: "A requirements conversation, on site where useful, often followed by a working demonstration before you commit to anything.",
-      },
-      {
-        number: "02",
-        title: "Build, with one point of contact",
-        description: "The engineer who scoped it writes the code, sets the architecture and reviews it with you. No handoffs between sales, design and delivery.",
-      },
-      {
-        number: "03",
-        title: "Ship, retest, support",
-        description: "Accessibility conformance is retested and documented after correction. Maintenance, cloud operations and further development continue under monthly agreement.",
-      },
+  why: {
+    heading: "Why one engineer instead of an agency",
+    items: [
+      { title: "Talk to the builder", text: "The person who scopes the work writes the code. No account managers relaying messages." },
+      { title: "One partner, whole stack", text: "Web, cloud, AI and hardware from one supplier who knows how it all fits together." },
+      { title: "Accessible by default", text: "Every build meets WCAG 2.0 AA — the requirement Norwegian law sets — backed by MSc research with Simula." },
+      { title: "Sized to your needs", text: "Pay for what you need this month. Support from NOK 890 a month, with no hiring overhead." },
     ],
   },
-  whyus: {
-    eyebrow: "Why VevKraft",
-    heading: "What working with VevKraft actually means.",
-    sub: "No account managers, no bundled minimums, no separate vendor for every part of the stack. Just what changes when one accountable engineer does the work.",
-    getLabel: "What you get",
-    skipLabel: "What you skip",
-    get: [
-      "Direct access to the engineer who scopes, builds and ships the work",
-      "Accessibility engineering grounded in master's-level research, not a plugin",
-      "One relationship across software, applied AI and hardware",
-      "Capacity sized to what you need this month, not a retainer minimum",
-      "Someone who can be on site in Oslo when a problem needs to be seen",
+  how: {
+    heading: "How it works",
+    steps: [
+      { label: "1 · Talk", title: "Intro call", text: "We go through what you need, online or on site in Oslo. Often I'll show a working demo before you commit to anything." },
+      { label: "2 · Build", title: "One point of contact", text: "I scope, design and build it, and review progress with you. No handoffs between sales, design and delivery." },
+      { label: "3 · Run", title: "Ongoing support", text: "Accessibility is retested before launch. Maintenance, cloud operations and new features continue on a monthly agreement." },
     ],
-    skip: [
-      "Account managers relaying messages to the person actually coding",
-      "Minimum engagement sizes built for enterprise budgets",
-      "A separate supplier for the app, the audit and the hardware",
-      "Employment overhead — salary, contributions, recruitment — for part-time need",
-      "A support inbox with no one accountable in Norway",
-    ],
+  },
+  meet: {
+    heading: "Hi, I'm Rizve.",
+    text: "I'm a software engineer in Oslo with an MSc in Informatics from the University of Oslo — my thesis on digital accessibility was carried out with Simula — and I'm an AWS Certified Cloud Practitioner. VevKraft is my practice: I build, host and support the technology small businesses run on, and you deal with me from the first call to the last fix.",
+    chips: ["MSc Informatics, UiO", "Simula research", "AWS Certified", "WCAG 2.0 AA"],
+    more: "More about me",
+    newTab: "opens in a new tab",
   },
   faq: {
     eyebrow: "FAQ",
@@ -314,6 +300,15 @@ const no: Dictionary = {
     ctaPrimary: "Start et prosjekt",
     ctaSecondary: "Se hva jeg gjør",
     trustedBy: "Tillit fra",
+    carouselLabel: "Hva VevKraft bygger",
+    slides: [
+      "Webutvikling: en nettside i nettleseren, koden bak og mobilversjonen",
+      "Tilgjengelighet: et skjema med tastaturfokus, en kontrastsjekk og full tilgjengelighetsscore",
+      "Skymigrering: en gammel server flyttet til AWS-skyen, nå i drift",
+      "KI-integrasjon: en chatassistent koblet til e-post, kalender, dokumenter og data",
+      "Bildebehandling: et termisk dronebilde av solcellepaneler med oppdagede varmepunkter og en inspeksjonsrapport",
+    ],
+    showSlide: "Vis illustrasjon",
   },
   services: {
     eyebrow: "Tjenester",
@@ -393,47 +388,29 @@ const no: Dictionary = {
       },
     ],
   },
-  process: {
-    eyebrow: "Slik jobber jeg",
-    heading: "Tre steg, ett ansvarlig menneske hele veien.",
-    steps: [
-      {
-        number: "01",
-        title: "Kartlegging og demonstrasjon",
-        description: "En kravsamtale, gjerne på stedet, ofte etterfulgt av en fungerende demonstrasjon før du forplikter deg til noe.",
-      },
-      {
-        number: "02",
-        title: "Bygging, med ett kontaktpunkt",
-        description: "Ingeniøren som kartla oppdraget skriver koden, setter arkitekturen og går gjennom den med deg. Ingen overleveringer mellom salg, design og leveranse.",
-      },
-      {
-        number: "03",
-        title: "Lansering, re-testing, støtte",
-        description: "Tilgjengelighetssamsvar re-testes og dokumenteres etter retting. Vedlikehold, skydrift og videre utvikling fortsetter under månedlig avtale.",
-      },
+  why: {
+    heading: "Hvorfor én ingeniør i stedet for et byrå",
+    items: [
+      { title: "Snakk med den som bygger", text: "Den som kartlegger oppdraget, skriver også koden. Ingen kundekontakter som videreformidler beskjeder." },
+      { title: "Én partner, hele stacken", text: "Web, sky, KI og maskinvare fra én leverandør som vet hvordan alt henger sammen." },
+      { title: "Tilgjengelig som standard", text: "Alt jeg bygger oppfyller WCAG 2.0 AA — kravet norsk lov stiller — forankret i masterforskning med Simula." },
+      { title: "Tilpasset behovet ditt", text: "Betal for det du trenger denne måneden. Støtte fra NOK 890 i måneden, uten ansettelseskostnader." },
     ],
   },
-  whyus: {
-    eyebrow: "Hvorfor VevKraft",
-    heading: "Hva det faktisk betyr å jobbe med VevKraft.",
-    sub: "Ingen kundekontakter som videreformidler beskjeder, ingen pakkede minstebeløp, ingen egen leverandør for hver del av stacken. Bare det som endrer seg når én ansvarlig ingeniør gjør jobben.",
-    getLabel: "Dette får du",
-    skipLabel: "Dette slipper du",
-    get: [
-      "Direkte tilgang til ingeniøren som kartlegger, bygger og leverer arbeidet",
-      "Tilgjengelighetsarbeid forankret i forskning på masternivå, ikke en plugin",
-      "Ett forhold på tvers av programvare, anvendt KI og maskinvare",
-      "Kapasitet tilpasset det du faktisk trenger denne måneden, ikke et minstebeløp",
-      "Noen som kan møte opp i Oslo når et problem må ses, ikke bare beskrives",
+  how: {
+    heading: "Slik jobber jeg",
+    steps: [
+      { label: "1 · Prat", title: "Innledende samtale", text: "Vi går gjennom hva du trenger, digitalt eller på stedet i Oslo. Ofte viser jeg en fungerende demo før du forplikter deg til noe." },
+      { label: "2 · Bygg", title: "Én kontaktperson", text: "Jeg kartlegger, designer og bygger løsningen, og går gjennom fremdriften med deg. Ingen overleveringer mellom salg, design og levering." },
+      { label: "3 · Drift", title: "Løpende støtte", text: "Tilgjengeligheten re-testes før lansering. Vedlikehold, skydrift og nye funksjoner fortsetter under en månedlig avtale." },
     ],
-    skip: [
-      "Kundekontakter som videreformidler beskjeder til den som faktisk koder",
-      "Minste oppdragsstørrelser bygget for bedriftsbudsjetter",
-      "Én leverandør for appen, en annen for revisjonen, en tredje for maskinvaren",
-      "Ansettelseskostnader — lønn, arbeidsgiveravgift, rekruttering — for et deltidsbehov",
-      "En supportinnboks uten noen med ansvar i Norge",
-    ],
+  },
+  meet: {
+    heading: "Hei, jeg er Rizve.",
+    text: "Jeg er programvareingeniør i Oslo med master i informatikk fra Universitetet i Oslo — masteroppgaven min om digital tilgjengelighet ble gjennomført i samarbeid med Simula — og jeg er AWS Certified Cloud Practitioner. VevKraft er min praksis: Jeg bygger, drifter og støtter teknologien små bedrifter er avhengige av, og du har med meg å gjøre fra første samtale til siste feilretting.",
+    chips: ["Master i informatikk, UiO", "Simula-forskning", "AWS-sertifisert", "WCAG 2.0 AA"],
+    more: "Mer om meg",
+    newTab: "åpnes i en ny fane",
   },
   faq: {
     eyebrow: "Ofte stilte spørsmål",
@@ -537,6 +514,15 @@ const bn: Dictionary = {
     ctaPrimary: "একটি প্রজেক্ট শুরু করুন",
     ctaSecondary: "আমি কী করি দেখুন",
     trustedBy: "যাদের আস্থা পেয়েছি",
+    carouselLabel: "ভেভক্রাফট যা তৈরি করে",
+    slides: [
+      "ওয়েব ডেভেলপমেন্ট: ব্রাউজারে একটি ওয়েবসাইট, তার কোড ও মোবাইল সংস্করণ",
+      "অ্যাক্সেসিবিলিটি: কীবোর্ড-ফোকাসড ফর্ম, কনট্রাস্ট পরীক্ষা ও পূর্ণ অ্যাক্সেসিবিলিটি স্কোর",
+      "ক্লাউড মাইগ্রেশন: একটি পুরনো সার্ভার AWS ক্লাউডে স্থানান্তরিত, এখন সচল",
+      "এআই ইন্টিগ্রেশন: ইমেইল, ক্যালেন্ডার, ডকুমেন্ট ও ডেটার সাথে যুক্ত একটি চ্যাট সহকারী",
+      "ইমেজ প্রসেসিং: সোলার প্যানেলের থার্মাল ড্রোন ছবি, শনাক্ত হটস্পট ও একটি পরিদর্শন রিপোর্ট",
+    ],
+    showSlide: "চিত্র দেখান",
   },
   services: {
     eyebrow: "সেবাসমূহ",
@@ -616,47 +602,29 @@ const bn: Dictionary = {
       },
     ],
   },
-  process: {
-    eyebrow: "কর্মপ্রণালী",
-    heading: "তিনটি ধাপ, শুরু থেকে শেষ পর্যন্ত একজনই দায়বদ্ধ।",
-    steps: [
-      {
-        number: "০১",
-        title: "আবিষ্কার ও প্রদর্শন",
-        description: "একটি প্রয়োজনীয়তা আলোচনা, উপযোগী হলে সরাসরি সাইটে, প্রায়ই একটি কার্যকরী প্রদর্শনী সহ — আপনি প্রতিশ্রুতিবদ্ধ হওয়ার আগে।",
-      },
-      {
-        number: "০২",
-        title: "নির্মাণ, একটিমাত্র যোগাযোগ বিন্দু দিয়ে",
-        description: "যে ইঞ্জিনিয়ার কাজের পরিধি নির্ধারণ করেন তিনিই কোড লেখেন, স্থাপত্য ঠিক করেন এবং আপনার সাথে পর্যালোচনা করেন। বিক্রয়, ডিজাইন ও ডেলিভারির মধ্যে কোনো হস্তান্তর নেই।",
-      },
-      {
-        number: "০৩",
-        title: "প্রকাশ, পুনঃপরীক্ষা, সহায়তা",
-        description: "সংশোধনের পর অ্যাক্সেসিবিলিটি সম্মতি পুনঃপরীক্ষিত ও নথিভুক্ত হয়। রক্ষণাবেক্ষণ, ক্লাউড অপারেশন ও পরবর্তী উন্নয়ন মাসিক চুক্তির অধীনে অব্যাহত থাকে।",
-      },
+  why: {
+    heading: "এজেন্সির বদলে একজন ইঞ্জিনিয়ার কেন",
+    items: [
+      { title: "নির্মাতার সাথেই কথা বলুন", text: "যিনি কাজের পরিধি ঠিক করেন, তিনিই কোড লেখেন। মাঝখানে কোনো অ্যাকাউন্ট ম্যানেজার নেই।" },
+      { title: "এক অংশীদার, পুরো স্ট্যাক", text: "ওয়েব, ক্লাউড, এআই ও হার্ডওয়্যার — এমন একজন সরবরাহকারীর কাছ থেকে, যিনি জানেন সব কীভাবে একসাথে কাজ করে।" },
+      { title: "শুরু থেকেই অ্যাক্সেসিবল", text: "প্রতিটি কাজ WCAG 2.0 AA পূরণ করে — নরওয়ের আইনের মান — সিমুলার সাথে মাস্টার্স গবেষণার ভিত্তিতে।" },
+      { title: "আপনার প্রয়োজন অনুযায়ী", text: "এই মাসে যতটুকু দরকার, ততটুকুর জন্যই অর্থ দিন। সহায়তা মাসে NOK ৮৯০ থেকে, নিয়োগের বাড়তি খরচ ছাড়া।" },
     ],
   },
-  whyus: {
-    eyebrow: "কেন ভেভক্রাফট",
-    heading: "ভেভক্রাফটের সাথে কাজ করার আসল মানে।",
-    sub: "কোনো অ্যাকাউন্ট ম্যানেজার বার্তা পৌঁছে দিচ্ছে না, কোনো বান্ডিল করা ন্যূনতম বাজেট নেই, স্ট্যাকের প্রতিটি অংশের জন্য আলাদা সরবরাহকারী নেই। একজন দায়বদ্ধ ইঞ্জিনিয়ার কাজ করলে যা বদলায়, শুধু তাই।",
-    getLabel: "যা আপনি পাচ্ছেন",
-    skipLabel: "যা আপনি এড়িয়ে যাচ্ছেন",
-    get: [
-      "যিনি কাজের পরিধি নির্ধারণ করেন, নির্মাণ করেন ও ডেলিভার করেন — সেই ইঞ্জিনিয়ারের সরাসরি প্রবেশাধিকার",
-      "মাস্টার্স-স্তরের গবেষণায় প্রোথিত অ্যাক্সেসিবিলিটি প্রকৌশল, কোনো প্লাগইন নয়",
-      "সফটওয়্যার, প্রায়োগিক এআই ও হার্ডওয়্যার জুড়ে একটিই সম্পর্ক",
-      "এই মাসে আপনার প্রকৃত প্রয়োজন অনুযায়ী সক্ষমতা, কোনো ন্যূনতম রিটেইনার নয়",
-      "যিনি সমস্যাটা বর্ণনার বদলে সরাসরি দেখার জন্য অসলোতে উপস্থিত থাকতে পারেন",
+  how: {
+    heading: "কীভাবে কাজ করি",
+    steps: [
+      { label: "১ · আলোচনা", title: "প্রাথমিক কল", text: "অনলাইনে বা অসলোতে সরাসরি, আপনার প্রয়োজন নিয়ে আলোচনা করি। প্রায়ই কোনো সিদ্ধান্তের আগে একটি কার্যকর ডেমো দেখাই।" },
+      { label: "২ · নির্মাণ", title: "একজনই যোগাযোগকারী", text: "আমি পরিকল্পনা, ডিজাইন ও নির্মাণ করি, এবং আপনার সাথে অগ্রগতি পর্যালোচনা করি। বিক্রয়, ডিজাইন ও ডেলিভারির মধ্যে কোনো হাতবদল নেই।" },
+      { label: "৩ · পরিচালনা", title: "চলমান সহায়তা", text: "লঞ্চের আগে অ্যাক্সেসিবিলিটি পুনঃপরীক্ষা করা হয়। রক্ষণাবেক্ষণ, ক্লাউড অপারেশন ও নতুন ফিচার মাসিক চুক্তিতে চলতে থাকে।" },
     ],
-    skip: [
-      "যিনি আসলে কোড লেখেন তার কাছে বার্তা পৌঁছে দেওয়া অ্যাকাউন্ট ম্যানেজার",
-      "এন্টারপ্রাইজ বাজেটের জন্য তৈরি ন্যূনতম কাজের আকার",
-      "অ্যাপের জন্য একজন, অডিটের জন্য আরেকজন, হার্ডওয়্যারের জন্য তৃতীয় সরবরাহকারী",
-      "খণ্ডকালীন প্রয়োজনের জন্য নিয়োগ খরচ — বেতন, নিয়োগকর্তার অবদান, নিয়োগ প্রক্রিয়া",
-      "নরওয়েতে দায়বদ্ধ কেউ নেই এমন একটি সাপোর্ট ইনবক্স",
-    ],
+  },
+  meet: {
+    heading: "হাই, আমি রিজভী।",
+    text: "আমি অসলোর একজন সফটওয়্যার ইঞ্জিনিয়ার, অসলো বিশ্ববিদ্যালয় থেকে ইনফরমেটিক্সে মাস্টার্স — ডিজিটাল অ্যাক্সেসিবিলিটি নিয়ে আমার থিসিস সিমুলার সহযোগিতায় সম্পন্ন — এবং AWS Certified Cloud Practitioner। ভেভক্রাফট আমার প্রতিষ্ঠান: ছোট ব্যবসাগুলো যে প্রযুক্তির উপর চলে, আমি তা তৈরি, হোস্ট ও সহায়তা করি, এবং প্রথম কল থেকে শেষ সমাধান পর্যন্ত আপনি আমার সাথেই কাজ করেন।",
+    chips: ["ইনফরমেটিক্সে মাস্টার্স, UiO", "সিমুলা গবেষণা", "AWS সার্টিফায়েড", "WCAG 2.0 AA"],
+    more: "আমার সম্পর্কে আরও",
+    newTab: "নতুন ট্যাবে খোলে",
   },
   faq: {
     eyebrow: "সচরাচর জিজ্ঞাসা",

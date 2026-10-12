@@ -11,7 +11,7 @@ export default function ServiceDetail({ service }: { service: ServiceItem }) {
   return (
     <section className="mx-auto max-w-6xl px-4 sm:px-6 pb-16 pt-10 sm:pt-12 md:pb-24 md:pt-20">
       <a
-        href="#/services"
+        href="/services"
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-soft/70 transition-colors hover:text-ink"
       >
         <ArrowIcon className="h-4 w-4 rotate-180" />
@@ -55,7 +55,7 @@ export default function ServiceDetail({ service }: { service: ServiceItem }) {
           <p className="mt-3 text-[15px] font-medium leading-relaxed text-ink">{service.price}</p>
           <p className="mt-2 text-xs text-ink-soft/60">{t.servicePage.priceNote}</p>
           <a
-            href="#/contact"
+            href="/contact"
             className="mt-6 flex w-full items-center justify-center rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-paper transition-colors hover:bg-blue"
           >
             {t.servicePage.contactCta}
