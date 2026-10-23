@@ -10,7 +10,9 @@ type LanguageContextValue = {
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 const STORAGE_KEY = "vevkraft-lang";
-const LANGS: Lang[] = ["en", "no", "bn"];
+const LANGS: Lang[] = ["no", "en", "bn"];
+// Norwegian is the default for new visitors; a saved choice of English or Bangla wins.
+const DEFAULT_LANG: Lang = "no";
 
 function isLang(value: string | null): value is Lang {
   return !!value && (LANGS as string[]).includes(value);
@@ -19,12 +21,12 @@ function isLang(value: string | null): value is Lang {
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>(() => {
     // Runs during the build-time prerender too, where there is no window.
-    if (typeof window === "undefined") return "en";
+    if (typeof window === "undefined") return DEFAULT_LANG;
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY);
-      return isLang(stored) ? stored : "en";
+      return isLang(stored) ? stored : DEFAULT_LANG;
     } catch {
-      return "en";
+      return DEFAULT_LANG;
     }
   });
 

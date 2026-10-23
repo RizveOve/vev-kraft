@@ -5,8 +5,8 @@ import { serviceHref, type Page } from "../router";
 import { ServiceIcon } from "./icons";
 
 const LANGS: { code: Lang; label: string }[] = [
-  { code: "en", label: "EN" },
   { code: "no", label: "NO" },
+  { code: "en", label: "EN" },
   { code: "bn", label: "বাং" },
 ];
 

@@ -3,10 +3,6 @@ import { routeFromPath, serviceHref, type Route } from "./router";
 
 export const SITE_URL = "https://vev-kraft.no";
 
-const HOME_TITLE = "VevKraft (Vev-Kraft) — Accessible Web Development & Applied AI in Oslo";
-const HOME_DESCRIPTION =
-  "VevKraft (Vev-Kraft) is an Oslo-based software consultancy for Norwegian businesses: accessible web development, AI and image processing, cloud migration, IT consultancy & training, and hardware lifecycle engineering.";
-
 export type PageMeta = { title: string; description: string; path: string };
 
 // Keep descriptions within what search results show.
@@ -28,7 +24,7 @@ export function pageMeta(route: Route, t: Dictionary): PageMeta {
     case "contact":
       return { title: `${t.nav.contact} — VevKraft`, description: clip(t.contact.sub), path: "/contact" };
     default:
-      return { title: HOME_TITLE, description: HOME_DESCRIPTION, path: "/" };
+      return { title: t.seo.homeTitle, description: clip(t.seo.homeDescription), path: "/" };
   }
 }
 
