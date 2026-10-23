@@ -8,7 +8,7 @@ import { allPaths, pageMeta, routeFromPath, SITE_URL } from "./seo";
 // Build-time prerender: one HTML document per route, so crawlers get real content and
 // each page works as a plain static file on any host.
 export function renderPages() {
-  const t = translations.en;
+  const t = translations.no;
   return allPaths(t).map((path) => {
     setServerPath(path);
     const html = renderToString(createElement(StrictMode, null, createElement(App)));

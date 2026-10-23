@@ -45,7 +45,7 @@ export type Dictionary = {
     eyebrow: string;
     heading: string;
     sub: string;
-    labels: { phone: string; address: string };
+    labels: { phone: string; email: string; address: string };
     form: {
       heading: string;
       name: string;
@@ -59,12 +59,14 @@ export type Dictionary = {
       error: string;
     };
   };
+  seo: { homeTitle: string; homeDescription: string };
   footer: {
     rights: string;
     backToTop: string;
     clientsHeading: string;
     contactHeading: string;
     address: string;
+    orgNumber: string;
     servicesHeading: string;
   };
   servicePage: {
@@ -261,7 +263,7 @@ const en: Dictionary = {
     eyebrow: "Contact",
     heading: "Tell me what you're building.",
     sub: "Whether it's a new web application, an accessibility audit or ongoing engineering capacity — reach out directly. I respond personally, usually within one business day.",
-    labels: { phone: "Phone", address: "Address" },
+    labels: { phone: "Phone", email: "Email", address: "Address" },
     form: {
       heading: "Send a message",
       name: "Name",
@@ -275,10 +277,16 @@ const en: Dictionary = {
       error: "Something went wrong and the message wasn't sent. Please try again, or call me at",
     },
   },
+  seo: {
+    homeTitle: "VevKraft (Vev-Kraft) — Accessible Web Development & Applied AI in Oslo",
+    homeDescription:
+      "VevKraft (Vev-Kraft) is an Oslo-based software consultancy for Norwegian businesses: accessible web development, AI and image processing, cloud migration, IT consultancy & training, and hardware lifecycle engineering.",
+  },
   footer: { rights: "© {year} VEVKRAFT BY HASAN, Oslo, Norway.", backToTop: "Back to top",
     clientsHeading: "Clients",
     contactHeading: "Contact",
     address: "Oslo, Norway",
+    orgNumber: "Org. no.",
     servicesHeading: "Services",
   },
   servicePage: {
@@ -475,7 +483,7 @@ const no: Dictionary = {
     eyebrow: "Kontakt",
     heading: "Fortell meg hva du bygger.",
     sub: "Enten det er en ny webapplikasjon, en tilgjengelighetsrevisjon eller løpende ingeniørkapasitet — ta direkte kontakt. Jeg svarer personlig, vanligvis innen én virkedag.",
-    labels: { phone: "Telefon", address: "Adresse" },
+    labels: { phone: "Telefon", email: "E-post", address: "Adresse" },
     form: {
       heading: "Send en melding",
       name: "Navn",
@@ -489,10 +497,16 @@ const no: Dictionary = {
       error: "Noe gikk galt, og meldingen ble ikke sendt. Prøv igjen, eller ring meg på",
     },
   },
+  seo: {
+    homeTitle: "VevKraft (Vev-Kraft) — Tilgjengelig webutvikling og anvendt KI i Oslo",
+    homeDescription:
+      "VevKraft (Vev-Kraft) er et konsulentselskap i Oslo for norske bedrifter: tilgjengelig webutvikling, KI og bildebehandling, skymigrering, IT-rådgivning og opplæring, og livssyklushåndtering av maskinvare.",
+  },
   footer: { rights: "© {year} VEVKRAFT BY HASAN, Oslo, Norge.", backToTop: "Til toppen",
     clientsHeading: "Kunder",
     contactHeading: "Kontakt",
     address: "Oslo, Norge",
+    orgNumber: "Org.nr.",
     servicesHeading: "Tjenester",
   },
   servicePage: {
@@ -689,7 +703,7 @@ const bn: Dictionary = {
     eyebrow: "যোগাযোগ",
     heading: "আপনি কী তৈরি করছেন, জানান।",
     sub: "নতুন ওয়েব অ্যাপ্লিকেশন হোক, অ্যাক্সেসিবিলিটি অডিট হোক বা ধারাবাহিক ইঞ্জিনিয়ারিং সক্ষমতা — সরাসরি যোগাযোগ করুন। আমি ব্যক্তিগতভাবে সাড়া দিই, সাধারণত এক কার্যদিবসের মধ্যে।",
-    labels: { phone: "ফোন", address: "ঠিকানা" },
+    labels: { phone: "ফোন", email: "ইমেইল", address: "ঠিকানা" },
     form: {
       heading: "একটি বার্তা পাঠান",
       name: "নাম",
@@ -703,10 +717,16 @@ const bn: Dictionary = {
       error: "কিছু একটা সমস্যা হয়েছে, বার্তাটি পাঠানো যায়নি। আবার চেষ্টা করুন, অথবা ফোন করুন:",
     },
   },
+  seo: {
+    homeTitle: "VevKraft (Vev-Kraft) — অসলোতে অ্যাক্সেসিবল ওয়েব ডেভেলপমেন্ট ও প্রায়োগিক এআই",
+    homeDescription:
+      "ভেভক্রাফট (Vev-Kraft) নরওয়ের ব্যবসার জন্য অসলো-ভিত্তিক সফটওয়্যার কনসালটেন্সি: অ্যাক্সেসিবল ওয়েব ডেভেলপমেন্ট, এআই ও ইমেজ প্রসেসিং, ক্লাউড মাইগ্রেশন, আইটি কনসালটেন্সি ও প্রশিক্ষণ, এবং হার্ডওয়্যার লাইফসাইকেল ইঞ্জিনিয়ারিং।",
+  },
   footer: { rights: "© {year} VEVKRAFT BY HASAN, অসলো, নরওয়ে।", backToTop: "উপরে ফিরে যান",
     clientsHeading: "ক্লায়েন্ট",
     contactHeading: "যোগাযোগ",
     address: "অসলো, নরওয়ে",
+    orgNumber: "প্রতিষ্ঠান নম্বর",
     servicesHeading: "সেবাসমূহ",
   },
   servicePage: {

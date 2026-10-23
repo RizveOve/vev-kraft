@@ -43,7 +43,8 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-lg lg:col-span-5 lg:max-w-none">
+          {/* Illustrations are a desktop-only extra; phones and tablets get the text straight away. */}
+          <div className="hidden lg:col-span-5 lg:block">
             <HeroSlideshow />
           </div>
         </div>

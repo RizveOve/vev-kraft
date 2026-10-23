@@ -5,6 +5,8 @@ import {
   CONTACT_PHONE,
   CONTACT_PHONE_HREF,
   LINKEDIN_URL,
+  ORG_NUMBER,
+  PUBLIC_EMAIL,
 } from "../siteInfo";
 import { serviceHref } from "../router";
 
@@ -40,6 +42,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <span className="sr-only">{t.contact.labels.email}: </span>
+                <a href={`mailto:${PUBLIC_EMAIL}`} className={linkClass}>
+                  {PUBLIC_EMAIL}
+                </a>
+              </li>
+              <li>
                 <span className="sr-only">{t.contact.labels.address}: </span>
                 <a href={ADDRESS_MAP_URL} target="_blank" rel="noreferrer" className={linkClass}>
                   {t.footer.address}
@@ -49,6 +57,9 @@ export default function Footer() {
                 <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" className={linkClass}>
                   LinkedIn
                 </a>
+              </li>
+              <li>
+                {t.footer.orgNumber} {ORG_NUMBER}
               </li>
             </ul>
           </div>
